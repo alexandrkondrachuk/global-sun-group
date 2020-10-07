@@ -1,0 +1,68 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins/_breakpoints";
+@import "../../scss/utilities/variables";
+@import "../../scss/utilities/functions";
+@import "../../scss/base/typography";
+
+#power-plants-statistic {
+  padding: response(90px) 0;
+  background-color: var(--bg-dark);
+
+  .statistic-leads {
+    h3 {
+      @extend .font-mono-2;
+      color: var(--green);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    h4 {
+      @extend .font-mono-3;
+      letter-spacing: 0;
+      color: var(--white);
+    }
+    p {
+      @extend .font-secondary;
+      color: var(--white);
+      letter-spacing: 0;
+    }
+  }
+  .statistic-timer {
+    padding-left: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    @include media-breakpoint-down(md) {
+      padding-left: 0;
+    }
+
+    .statistic-timer-number {
+      padding: response(15px) 0;
+      font: normal 300 response(50px)/0.8 var(--font-family-sans-serif);
+      color: var(--teal);
+      letter-spacing: 1px;
+    }
+
+    .statistic-timer-text {
+      position: relative;
+      padding-bottom: response(15px);
+      margin-bottom: response(15px);
+      font: normal 300 response(16px)/1.7 var(--font-family-poppins);
+      color: var(--secondary);
+      letter-spacing: 0;
+      &:after {
+        content: '';
+        display: block;
+        width: response(32px);
+        height: 2px;
+        border-radius: 2px;
+        background-color: var(--teal);
+        position: absolute;
+        bottom: 0;
+        left: 0;
+      }
+    }
+  }
+}

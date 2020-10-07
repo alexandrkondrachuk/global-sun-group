@@ -1,0 +1,63 @@
+@import "../utilities/mixins";
+
+@include font-face('Poppins', '../fonts/Poppins-Thin', 100, normal, ttf);
+@include font-face('Poppins', '../fonts/Poppins-Light', 200, normal, ttf);
+@include font-face('Poppins', '../fonts/Poppins-Regular', 300, normal, ttf);
+@include font-face('Poppins', '../fonts/Poppins-Medium', 400, normal, ttf);
+@include font-face('Poppins', '../fonts/Poppins-Bold', 600, normal, ttf);
+
+@include font-face('Poppins', '../fonts/Poppins-ThinItalic', 100, italic, ttf);
+@include font-face('Poppins', '../fonts/Poppins-LightItalic', 200, italic, ttf);
+@include font-face('Poppins', '../fonts/Poppins-Italic', 300, italic, ttf);
+@include font-face('Poppins', '../fonts/Poppins-MediumItalic', 400, italic, ttf);
+@include font-face('Poppins', '../fonts/Poppins-BoldItalic', 300, italic, ttf);
+
+@include font-face('Montserrat', '../fonts/Montserrat-Thin', 100, normal, ttf);
+@include font-face('Montserrat', '../fonts/Montserrat-Light', 200, normal, ttf);
+@include font-face('Montserrat', '../fonts/Montserrat-Regular', 300, normal, ttf);
+@include font-face('Montserrat', '../fonts/Montserrat-Medium', 400, normal, ttf);
+@include font-face('Montserrat', '../fonts/Montserrat-Bold', 600, normal, ttf);
+
+@include font-face('Montserrat', '../fonts/Montserrat-ThinItalic', 100, italic, ttf);
+@include font-face('Montserrat', '../fonts/Montserrat-LightItalic', 200, italic, ttf);
+@include font-face('Montserrat', '../fonts/Montserrat-Italic', 300, italic, ttf);
+@include font-face('Montserrat', '../fonts/Montserrat-MediumItalic', 400, italic, ttf);
+@include font-face('Montserrat', '../fonts/Montserrat-BoldItalic', 300, italic, ttf);
+
+@include font-face('Helvetica Neu', '../fonts/HelveticaNeue Thin', 100, normal, ttf);
+@include font-face('Helvetica Neu', '../fonts/HelveticaNeue Light', 200, normal, ttf);
+@include font-face('Helvetica Neu', '../fonts/HelveticaNeue', 300, normal, ttf);
+@include font-face('Helvetica Neu', '../fonts/HelveticaNeueMed', 400, normal, ttf);
+@include font-face('Helvetica Neu', '../fonts/Helvetica Neu Bold', 600, normal, ttf);
+
+:root {
+  --font-family-poppins: #{$font-family-poppins};
+}
+
+.font-primary {
+  font: normal 300 response(20px)/1.5 var(--font-family-sans-serif);
+}
+
+.font-secondary {
+  font: normal 300 response(16px)/1.7 var(--font-family-poppins);
+}
+
+.font-mono-1 {
+  font: normal 400 response(20px)/1.5 var(--font-family-sans-serif);
+}
+
+.font-mono-2 {
+  font: normal 400 response(16px)/1.7 var(--font-family-sans-serif);
+}
+
+.font-mono-3 {
+  font: normal 300 response(30px)/1.4 var(--font-family-sans-serif);
+}
+
+.font-mono-4 {
+  font: normal 300 response(16px)/1.9 var(--font-family-poppins);
+}
+
+.font-mono-5 {
+  font: normal 300 response(14px)/1.7 var(--font-family-poppins);
+}

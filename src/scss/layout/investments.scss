@@ -1,0 +1,136 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins/_breakpoints";
+@import "../../scss/utilities/variables";
+@import "../../scss/utilities/functions";
+@import "../../scss/base/typography";
+
+#investments {
+  padding: response(90px) 0;
+
+  .investments-title {
+    text-align: center;
+    @extend .font-mono-2;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--green);
+  }
+
+  .investments-sub {
+    margin-bottom: response(30px);
+    text-align: center;
+    @extend .font-mono-3;
+    letter-spacing: 0;
+    color: var(--dark);
+  }
+
+  .investment-card {
+    margin-bottom: response(30px);
+    min-height: response(536px);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    border: 1px solid #e8e8e8;
+    border-radius: 4px;
+    transition: border .45s ease-in-out;
+    &:hover {
+      cursor: pointer;
+      border: 1px solid var(--green);
+    }
+  }
+
+  .investment-card-header {
+    padding: response(5px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: var(--bg-light);
+    width: 100%;
+    height: response(180px);
+
+    h3 {
+      @extend .font-primary;
+      letter-spacing: 0;
+      color: var(--dark);
+      text-transform: uppercase;
+    }
+    .average {
+      @extend .font-secondary;
+      letter-spacing: 0;
+      color: var(--gray);
+    }
+    .price {
+      font: normal 300 response(43px)/1.2 var(--font-family-poppins);
+      letter-spacing: 0;
+      color: var(--green);
+    }
+    .currency {
+      font-size: response(26px);
+    }
+  }
+
+  .investment-card-body {
+    margin: response(15px);
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+      width: 100%;
+      height: auto;
+      flex-direction: column;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    li {
+      width: calc(100% - 40px);
+      display: block;
+      padding: response(15px);
+      @extend .font-secondary;
+      text-align: center;
+      letter-spacing: 0;
+      color: var(--gray);
+      border-bottom: 1px solid #e8e8e8;
+      @include media-breakpoint-down(md) {
+        width: calc(100% - 20px);
+      }
+    }
+  }
+
+  .investment-card-footer {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .investment-card-btn {
+      padding: response(17px) response(15px);
+      min-width: response(200px);
+      font: normal 400 response(16px) var(--font-family-sans-serif);
+      color: var(--white);
+      background-color: var(--green);
+      border-color: var(--green);
+      border-radius: 0;
+      transition: color .45s ease-in-out, background-color .45s ease-in-out;
+      &:hover, &:focus, &:active {
+        outline: none;
+        text-decoration: none;
+        box-shadow: none;
+        color: var(--green);
+        background-color: var(--white);
+      }
+    }
+  }
+
+}

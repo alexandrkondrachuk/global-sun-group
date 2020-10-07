@@ -1,0 +1,29 @@
+$baseMargin: 2rem;
+$textBaseColor: lightgreen;
+
+$font-family-sans-serif: 'Montserrat', sans-serif;
+$font-family-poppins: 'Poppins', sans-serif;
+
+$theme-colors: (
+        "green": #00a776,
+        "teal": #b3ef32,
+        "dark": #2c352d,
+        "gray": #666666,
+        "gray-dark": #434f53,
+        "secondary": #dbdbdb,
+        "bg-light": #f5f5f5,
+        "bg-dark": #323b56,
+        "bg-black": #231f2c,
+        "bg-black-secondary": #091e3f,
+);
+
+$grid-breakpoints: (
+        xs: 0,
+        ss: 360px,
+        sm: 576px,
+        md: 768px,
+        lg: 992px,
+        xl: 1280px,
+        hd: 1440px,
+        hdf: 1920px
+);

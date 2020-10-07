@@ -1,0 +1,42 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins/_breakpoints";
+@import "../../scss/utilities/variables";
+@import "../../scss/utilities/functions";
+@import "../../scss/base/typography";
+
+#main-description {
+  padding: response(90px) 0;
+  background-color: var(--bg-light);
+
+  .box-centering {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .description-box {
+    @extend .box-centering;
+
+    figure {
+      @extend .box-centering;
+
+      figcaption {
+        @extend .font-primary;
+        letter-spacing: 0;
+        text-transform: uppercase;
+        color: var(--dark);
+      }
+    }
+
+    .description-box-text {
+      @extend .font-secondary;
+      letter-spacing: 0;
+      color: var(--gray);
+    }
+  }
+}

@@ -1,0 +1,49 @@
+@import "utilities/variables";
+@import "utilities/functions";
+@import "utilities/mixins";
+@import "vendors/bootstrap";
+@import "~swiper/swiper-bundle.css";
+@import "base/typography";
+/* Layout */
+@import "layout/navbar";
+@import "layout/video-header";
+@import "layout/description";
+@import "layout/plants-swiper";
+@import "layout/statistics";
+@import "layout/investment-calculator";
+@import "layout/last-news";
+@import "layout/contact-us";
+@import "layout/our-team";
+@import "layout/investments";
+@import "layout/footer";
+
+@include responsive();
+
+*::-moz-selection {
+    background-color: var(--teal);
+}
+
+*::selection {
+    background-color: var(--teal);
+}
+
+body {
+  font: 300 1rem var(--font-family-sans-serif);
+  color: var(--green);
+}
+
+.btn-main {
+    min-width: response(178px);
+    min-height: response(58px);
+    background-color: var(--green);
+    border: response(1px) solid var(--green);
+    border-radius: 0;
+    color: var(--white);
+    font-weight: 300;
+    transition: color .45s ease-in-out, background-color .45s ease-in-out;
+    &:hover, &:focus {
+        text-decoration: none;
+        background-color: var(--white);
+        color: var(--green);
+    }
+}

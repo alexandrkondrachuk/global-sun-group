@@ -1,0 +1,13 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins/_breakpoints";
+@import "../../scss/utilities/variables";
+@import "../../scss/utilities/functions";
+
+#power-plants-investment-calculator {
+  padding: response(90px) 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}

@@ -1,0 +1,55 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins/_breakpoints";
+@import "../../scss/utilities/variables";
+@import "../../scss/utilities/functions";
+@import "../../scss/base/typography";
+
+#contact-us {
+  padding: response(90px) 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: var(--dark) url("../images/mt-1168-home-parallax1 (1).jpg") no-repeat center center;
+  background-size: cover;
+
+  .container {
+    margin: response(25px) response(450px);
+    @include media-breakpoint-down(ms) {
+      margin: response(25px) 0;
+    }
+  }
+
+  .contact-us-title {
+    margin-bottom: response(30px);
+    @extend .font-mono-3;
+    letter-spacing: 0;
+    color: var(--white);
+  }
+
+  .contact-us-lead {
+    margin-bottom: response(30px);
+    @extend .font-secondary;
+    letter-spacing: 0;
+    color: var(--white);
+  }
+
+  .contact-us-btn {
+    padding: response(17px) response(15px);
+    min-width: response(240px);
+    background-color: var(--green);
+    font: normal 300 response(17px)/response(22px) var(--font-family-sans-serif);
+    color: var(--white);
+    border-radius: 0;
+    border: 1px solid var(--green);
+    transition: color .45s ease-in-out, background-color .45s ease-in-out;
+    &:hover, &:active, &:focus {
+      text-decoration: none;
+      outline: none;
+      box-shadow: none;
+      color: var(--green);
+      background-color: var(--white);
+    }
+  }
+}
