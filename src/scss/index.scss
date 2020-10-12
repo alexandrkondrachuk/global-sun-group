@@ -5,6 +5,7 @@
 @import "~swiper/swiper-bundle.css";
 @import "base/typography";
 /* Layout */
+@import "layout/spinner";
 @import "layout/navbar";
 @import "layout/video-header";
 @import "layout/description";
@@ -46,4 +47,57 @@ body {
         background-color: var(--white);
         color: var(--green);
     }
+}
+
+#button {
+    display: inline-block;
+    background-color: var(--green);
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    border-radius: 50%;
+    position: fixed;
+    bottom: 60px;
+    right: 40px;
+    transition: background-color .3s,
+    opacity .5s, visibility .5s;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1000;
+    &:hover, &:focus {
+        text-decoration: none;
+        cursor: pointer;
+        background-color: var(--gray);
+    }
+    &:after {
+        content: "\f062";
+        font-family: FontAwesome;
+        font-weight: normal;
+        font-style: normal;
+        font-size: 2em;
+        line-height: 60px;
+        color: var(--white);
+        @include media-breakpoint-down(md) {
+            font-size: 1.4em;
+            line-height: 40px;
+        }
+    }
+    &:active {
+        background-color: var(--dark);
+    }
+    &.show {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    @include media-breakpoint-down(md) {
+        width: 40px;
+        height: 40px;
+        bottom: 40px;
+        right: 20px;
+    }
+}
+
+main {
+    display: none;
 }
