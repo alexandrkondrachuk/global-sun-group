@@ -1,0 +1,98 @@
+[
+  {
+    "Id": 1,
+    "StationName": "Kamuthi Solar Power Project",
+    "Address": "India",
+    "Roi": 11,
+    "PricePerKW": 12.49,
+    "MinPower": 648,
+    "StartBuildingDate": "2020-10-14 00:00",
+    "EndBuildingDate": "2020-10-14 00:00",
+    "EndInvestmentDate": "2020-10-14 00:00",
+    "imgPath": "mt-1168-gallery-img1.jpg"
+  },
+  {
+    "Id": 2,
+    "StationName": "Longyangxia Dam Solar Park",
+    "Address": "China",
+    "Roi": 13,
+    "PricePerKW": 12.49,
+    "MinPower": 850,
+    "StartBuildingDate": "2020-10-14 00:00",
+    "EndBuildingDate": "2020-10-14 00:00",
+    "EndInvestmentDate": "2020-10-14 00:00",
+    "imgPath": "mt-1168-gallery-img2.jpg"
+  },
+  {
+    "Id": 3,
+    "StationName": "Kurnool Ultra Mega Solar Park",
+    "Address": "India",
+    "Roi": 9,
+    "PricePerKW": 12.49,
+    "MinPower": 1000,
+    "StartBuildingDate": "2020-10-14 00:00",
+    "EndBuildingDate": "2020-10-14 00:00",
+    "EndInvestmentDate": "2020-10-14 00:00",
+    "imgPath": "mt-1168-gallery-img3.jpg"
+  },
+  {
+    "Id": 4,
+    "StationName": "Datong Solar Power Top Runner Base",
+    "Address": "China",
+    "Roi": 12,
+    "PricePerKW": 12.49,
+    "MinPower": 1000,
+    "StartBuildingDate": "2020-10-14 00:00",
+    "EndBuildingDate": "2020-10-14 00:00",
+    "EndInvestmentDate": "2020-10-14 00:00",
+    "imgPath": "mt-1168-gallery-img4.jpg"
+  },
+  {
+    "Id": 5,
+    "StationName": "Noor Solar Park",
+    "Address": "Morocco",
+    "Roi": 12,
+    "PricePerKW": 12.49,
+    "MinPower": 1117,
+    "StartBuildingDate": "2020-10-14 00:00",
+    "EndBuildingDate": "2020-10-14 00:00",
+    "EndInvestmentDate": "2020-10-14 00:00",
+    "imgPath": "mt-1168-gallery-img5.jpg"
+  },
+  {
+    "Id": 6,
+    "StationName": "Pavagada Solar Park",
+    "Address": "India",
+    "Roi": 13,
+    "PricePerKW": 12.49,
+    "MinPower": 1400,
+    "StartBuildingDate": "2020-10-14 00:00",
+    "EndBuildingDate": "2020-10-14 00:00",
+    "EndInvestmentDate": "2020-10-14 00:00",
+    "imgPath": "mt-1168-gallery-img6.jpg"
+  },
+  {
+    "Id": 7,
+    "StationName": "Tengger Desert Solar Park",
+    "Address": "China",
+    "Roi": 8,
+    "PricePerKW": 12.49,
+    "MinPower": 1500,
+    "StartBuildingDate": "2020-10-14 00:00",
+    "EndBuildingDate": "2020-10-14 00:00",
+    "EndInvestmentDate": "2020-10-14 00:00",
+    "imgPath": "mt-1168-gallery-img7.jpg"
+  },
+  {
+    "Id": 8,
+    "StationName": "Arnedo Solar Plant",
+    "Address": "Spain",
+    "Roi": 11,
+    "PricePerKW": 12.49,
+    "MinPower": 1772,
+    "StartBuildingDate": "2020-10-14 00:00",
+    "EndBuildingDate": "2020-10-14 00:00",
+    "EndInvestmentDate": "2020-10-14 00:00",
+    "imgPath": "mt-1168-gallery-img8.jpg"
+  }
+]

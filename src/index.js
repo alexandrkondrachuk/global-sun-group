@@ -1,6 +1,8 @@
 import './scss/index.scss';
-import { Swiper, Navigation, Autoplay, Pagination } from 'swiper';
+import { Swiper, Navigation, Autoplay, Pagination, Lazy } from 'swiper';
 import { CountUp } from 'countup.js';
+import * as axios from "axios";
+
 // Navbar
 
 jQuery(document).ready(function () {
@@ -78,42 +80,78 @@ jQuery(document).ready(function () {
     // 6. Power Plants Carousel
     // @todo Get data from the server
     function initSwiper() {
-        Swiper.use([Navigation, Autoplay, Pagination]);
+        axios.get('./public/power-plants.json')
+            .then((response) => {
+                Swiper.use([Navigation, Autoplay, Pagination, Lazy]);
 
-        const swiper = new Swiper('.swiper-container', {
-            slidesPerView: 3,
-            spaceBetween: 30,
-            slidesPerGroup: 1,
-            autoplay: {
-                delay: 3000,
-            },
-            loop: true,
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            breakpoints: {
-                // when window width is >= 320px
-                320: {
-                    slidesPerView: 1,
-                    spaceBetween: 10
-                },
-                // when window width is >= 480px
-                768: {
-                    slidesPerView: 2,
-                    spaceBetween: 10
-                },
-                // when window width is >= 640px
-                992: {
+                if (!document.querySelector('.swiper-container')) return;
+
+                const swiper = new Swiper('.swiper-container', {
+                    // Disable preloading of all images
+                    preloadImages: false,
+                    // Enable lazy loading
+                    lazy: true,
                     slidesPerView: 3,
-                    spaceBetween: 15
+                    spaceBetween: 30,
+                    slidesPerGroup: 1,
+                    autoplay: {
+                        delay: 3000,
+                    },
+                    loop: true,
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true,
+                    },
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    },
+                    breakpoints: {
+                        // when window width is >= 320px
+                        320: {
+                            slidesPerView: 1,
+                            spaceBetween: 10
+                        },
+                        // when window width is >= 480px
+                        768: {
+                            slidesPerView: 2,
+                            spaceBetween: 10
+                        },
+                        // when window width is >= 640px
+                        992: {
+                            slidesPerView: 3,
+                            spaceBetween: 15
+                        }
+                    }
+                });
+
+                if (response.data) {
+                    response.data.forEach((slide) => {
+                        const s = `
+                    <div class="swiper-slide">
+                        <div class="swiper-slide-mark-left">
+                            <p><span class="amount">${slide.MinPower}</span><span class="unit">mw</span></p>
+                        </div>
+                        <div class="swiper-slide-mark-right">
+                            <p><span class="prefix">roi: </span><span class="amount">${slide.Roi}</span><span
+                                    class="unit">%</span></p>
+                        </div>
+                        <img data-src="public/assets/images/${slide.imgPath}" class="swiper-lazy">
+                        <div class="swiper-slide-info">
+                            <h3><span class="swiper-slide-info-icon icon-place"></span>${slide.Address}</h3>
+                            <h4><span class="swiper-slide-info-icon icon-name"></span>${slide.StationName}</h4>
+                        </div>
+                        <div class="swiper-lazy-preloader"></div>
+                    </div>
+                        `;
+                        swiper.appendSlide(s);
+                        swiper.update(true);
+                    });
                 }
-            }
-        });
+            })
+            .catch((e) => {
+                throw new Error(e);
+            });
     }
 
     // 7. Statistic counters
@@ -127,6 +165,7 @@ jQuery(document).ready(function () {
             separator: ' ',
         };
         let start = true;
+        if (!statisticElement) return;
         jQuery(window).scroll(function () {
             if ((jQuery(window).scrollTop() > (statisticElement.offsetTop - offset)) && start) {
                 const countersElements = jQuery('.statistic-timer-number');
@@ -165,18 +204,21 @@ jQuery(document).ready(function () {
             jQuery(main).fadeIn();
             initSwiper();
             initCounters();
-        }, 3000);
+        }, 1000);
     }
 
     // 10. Navbar class
     const navbarElement = $('#main-navbar');
+    const navbarOffset = 50;
     jQuery(window).scroll(function () {
-        if (jQuery(window).scrollTop() > 135) {
-            console.log('add class');
+        if (jQuery(window).scrollTop() > navbarOffset) {
             $(navbarElement).addClass('sticky');
         } else {
             $(navbarElement).removeClass('sticky');
         }
     });
+
+    // 10. Enable collapse
+    $('.collapse').collapse('hide');
 
 });

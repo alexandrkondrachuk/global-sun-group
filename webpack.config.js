@@ -65,6 +65,11 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin(),
         new HtmlWebpackPlugin({filename: 'index.html', template: 'src/index.html'}),
+        new HtmlWebpackPlugin({filename: 'our-power-plants.html', template: 'src/our-power-plants.html'}),
+        new HtmlWebpackPlugin({filename: 'about-us.html', template: 'src/about-us.html'}),
+        new HtmlWebpackPlugin({filename: 'faq.html', template: 'src/faq.html'}),
+        new HtmlWebpackPlugin({filename: 'team.html', template: 'src/team.html'}),
+        new HtmlWebpackPlugin({filename: 'contacts.html', template: 'src/contacts.html'}),
         new MiniCssExtractPlugin({filename: 'style.css'}),
         new CopyPlugin({
             patterns: [

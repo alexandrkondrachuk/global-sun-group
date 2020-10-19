@@ -1,0 +1,70 @@
+@import "../../../node_modules/bootstrap/scss/functions";
+@import "../../../node_modules/bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins/_breakpoints";
+@import "../utilities/variables";
+@import "../utilities/functions";
+@import "../base/typography";
+
+.faq {
+  h2 {
+    margin-bottom: response(30px);
+    @extend .font-mono-3;
+    color: var(--dark);
+  }
+
+  .faq-collapse {
+    margin-bottom: response(30px);
+  }
+
+  .faq-collapse-block {
+    margin-bottom: response(16px);
+    .btn[data-toggle="collapse"] {
+      @extend .font-mono-1;
+      text-align: left;
+      color: var(--green);
+      border-radius: 0;
+      border-bottom: 1px solid transparent;
+      &:hover, &:focus, &:active {
+        text-decoration: none;
+        box-shadow: none;
+      }
+      &.collapsed {
+        border-bottom: 1px solid var(--gray);
+        &:before {
+          content: "\f067";
+          font-family: FontAwesome;
+          font-weight: normal;
+          font-style: normal;
+          font-size: response(16px);
+          line-height: response(16px);
+          color: var(--green);
+        }
+      }
+      &:before {
+        content: "\f068";
+        font-family: FontAwesome;
+        font-weight: normal;
+        font-style: normal;
+        font-size: response(16px);
+        line-height: response(16px);
+        color: var(--green);
+      }
+
+    }
+
+    .card.card-body {
+      padding-left: response(30px);
+      border-radius: 0;
+      border-color: transparent;
+      border-bottom: 1px solid var(--gray);
+      p {
+        @extend .font-secondary;
+        color: var(--gray);
+      }
+    }
+
+    .collapse {
+      border-color: transparent;
+    }
+  }
+}

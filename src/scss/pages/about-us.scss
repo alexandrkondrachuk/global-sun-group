@@ -1,0 +1,42 @@
+@import "../../../node_modules/bootstrap/scss/functions";
+@import "../../../node_modules/bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins/_breakpoints";
+@import "../utilities/variables";
+@import "../utilities/functions";
+@import "../base/typography";
+
+.about-us {
+  .about-us-description-text {
+    h3 {
+      @extend .font-mono-2;
+      text-transform: uppercase;
+      color: var(--green);
+    }
+
+    h4 {
+      @extend .font-mono-3;
+      color: var(--dark);
+    }
+
+    .lead {
+      @extend .font-secondary;
+      color: var(--gray);
+    }
+  }
+
+  .about-us-description-details {
+    margin: response(30px) 0;
+    .detail-block {
+      h3 {
+        @extend .font-mono-1;
+        text-transform: uppercase;
+        color: var(--dark);
+      }
+
+      p {
+        @extend .font-secondary;
+        color: var(--dark);
+      }
+    }
+  }
+}

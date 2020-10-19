@@ -1,0 +1,60 @@
+@import "../../../node_modules/bootstrap/scss/functions";
+@import "../../../node_modules/bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins/_breakpoints";
+@import "../utilities/variables";
+@import "../utilities/functions";
+@import "../base/typography";
+
+$navbarHeight: response(132px);
+$pageBannerHeight: response(278px);
+
+.page-container {
+  min-height: 50vh;
+  padding-top: $navbarHeight;
+
+  .page-banner {
+    width: 100%;
+    height: $pageBannerHeight;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background: url(../images/mt-1168-about-us-heade-bg1_1.jpg) center top / cover no-repeat;
+  }
+
+  .page-banner-text {
+    font: normal 300 34px/1.4 var(--font-family-sans-serif);
+    letter-spacing: 0;
+    color: var(--white);
+  }
+
+  .page-content {
+    padding: response(90px) 0;
+  }
+
+}
+
+#page-description {
+  padding: response(90px) 0;
+
+  .page-description-text {
+    h3 {
+      @extend .font-mono-2;
+      text-transform: uppercase;
+      color: var(--green);
+    }
+
+    h4 {
+      @extend .font-mono-3;
+      color: var(--dark);
+      text-transform: uppercase;
+    }
+
+    .lead {
+      @extend .font-primary;
+    }
+
+    .sub {
+      @extend .font-secondary;
+    }
+  }
+}

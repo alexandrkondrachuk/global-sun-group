@@ -10,6 +10,23 @@ $navbarHeight: response(132px);
   &.navbar {
     min-height: $navbarHeight;
     border-bottom: response(1px) solid var(--black);
+    border-bottom: 2px solid transparent;
+    transition: min-height .45s linear, border-bottom-color .45s linear;
+  }
+
+  &.sticky {
+    min-height: response(95px);
+    border-bottom-color: var(--gray);
+    .navbar-brand {
+      figure {
+        img {
+          max-width: 80%;
+          @include media-breakpoint-down(md) {
+            max-width: 55%;
+          }
+        }
+      }
+    }
   }
 
   #navbarNavAltMarkup {
@@ -42,8 +59,10 @@ $navbarHeight: response(132px);
       }
 
       img {
+        max-width: 100%;
+        transition: max-width .45s linear;
         @include media-breakpoint-down(md) {
-          width: 65%;
+          max-width: 65%;
         }
       }
     }

@@ -18,6 +18,12 @@
 @import "layout/investments";
 @import "layout/footer";
 
+/* Pages */
+@import "pages/page";
+@import "pages/our-power-plants";
+@import "pages/about-us";
+@import "pages/faq";
+
 @include responsive();
 
 *::-moz-selection {
@@ -30,7 +36,7 @@
 
 body {
   font: 300 1rem var(--font-family-sans-serif);
-  color: var(--green);
+  color: var(--dark);
 }
 
 .btn-main {

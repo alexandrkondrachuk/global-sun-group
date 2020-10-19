@@ -1,0 +1,35 @@
+@import "../../../node_modules/bootstrap/scss/functions";
+@import "../../../node_modules/bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins/_breakpoints";
+@import "../utilities/variables";
+@import "../utilities/functions";
+@import "../base/typography";
+
+.our-power-plants {
+  .power-plants-wrapper {
+    .lead {
+      margin-bottom: response(30px);
+      @extend .font-mono-3;
+      color: var(--dark);
+    }
+  }
+  .power-plant-box {
+    margin-bottom: response(30px);
+
+    .power-plant-name {
+      margin: 0;
+      @extend .font-mono-2;
+      color: var(--green);
+      text-transform: uppercase;
+    }
+
+    .power-plant-address {
+      @extend .font-mono-1;
+      text-transform: uppercase;
+    }
+
+    .power-plant-description {
+      @extend .font-mono-4;
+    }
+  }
+}
