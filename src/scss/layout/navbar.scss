@@ -228,4 +228,8 @@ $navbarHeight: response(132px);
       background-size: response(24px) response(24px);
     }
   }
+
+  .dropdown-item.active {
+    background-color: var(--green);
+  }
 }

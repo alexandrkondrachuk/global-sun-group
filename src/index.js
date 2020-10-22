@@ -221,4 +221,10 @@ jQuery(document).ready(function () {
     // 10. Enable collapse
     $('.collapse').collapse('hide');
 
+    // remove any current navbar active classes
+    jQuery(".navbar .nav-link.active").removeClass('active');
+// add active class to proper navbar item that matches window.location
+    jQuery('.navbar-nav .nav-link[href="' + location.pathname + '"]').addClass('active');
+    jQuery('.navbar-nav .dropdown-item[href="' + location.pathname + '"]').addClass('active');
+    console.log(jQuery('.navbar-nav .nav-link[href="' + location.pathname + '"]'));
 });

@@ -1,0 +1,44 @@
+@import "../../../node_modules/bootstrap/scss/functions";
+@import "../../../node_modules/bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins/_breakpoints";
+@import "../utilities/variables";
+@import "../utilities/functions";
+@import "../base/typography";
+
+.team {
+  .team-member {
+    img {
+      width: 100%;
+      height: 100%;
+      max-width: 100%;
+      object-fit: contain;
+      object-position: top;
+    }
+
+    .team-member-name {
+      h3 {
+        margin-bottom: 0;
+        @extend .font-mono-1;
+        color: var(--dark);
+        text-align: center;
+      }
+    }
+
+    .team-member-position {
+      h4 {
+        font: normal 300 14px/1.7 var(--font-family-poppins);
+        letter-spacing: 0;
+        color: #b7b6b4;
+        text-align: center;
+      }
+    }
+
+    .team-member-info {
+      p {
+        @extend .font-mono-4;
+        text-align: center;
+        color: var(--gray);
+      }
+    }
+  }
+}

@@ -22,7 +22,7 @@ $pageBannerHeight: response(278px);
   }
 
   .page-banner-text {
-    font: normal 300 34px/1.4 var(--font-family-sans-serif);
+    font: normal 300 response(34px)/1.4 var(--font-family-sans-serif);
     letter-spacing: 0;
     color: var(--white);
   }
