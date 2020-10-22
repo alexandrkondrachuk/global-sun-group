@@ -217,14 +217,14 @@ $navbarHeight: response(132px);
 
   #log-in-button {
     .log-in-icon {
-      background: url("../images/icons/log-in.svg") no-repeat center center;
+      background: url("../public/assets/images/icons/log-in.svg") no-repeat center center;
       background-size: response(24px) response(24px);
     }
   }
 
   #register-button {
     .register-icon {
-      background: url("../images/icons/register.svg") no-repeat center center;
+      background: url("../public/assets/images/icons/register.svg") no-repeat center center;
       background-size: response(24px) response(24px);
     }
   }

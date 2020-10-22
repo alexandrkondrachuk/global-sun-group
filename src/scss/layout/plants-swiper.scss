@@ -169,14 +169,14 @@
       display: block;
       width: response(32px);
       height: response(32px);
-      background: var(--green) url("../images/icons/address-location.svg") no-repeat center center;
+      background: var(--green) url("../public/assets/images/icons/address-location.svg") no-repeat center center;
     }
 
     .swiper-slide-info-icon.icon-place {
       display: block;
       width: response(24px);
       height: response(24px);
-      background: var(--green) url("../images/icons/address-location.svg") no-repeat center center;
+      background: var(--green) url("../public/assets/images/icons/address-location.svg") no-repeat center center;
     }
 
     .swiper-slide-info-icon.icon-name {
@@ -184,7 +184,7 @@
       display: block;
       width: response(24px);;
       height: response(24px);
-      background: var(--green) url("../images/icons/business-card.svg") no-repeat center center;
+      background: var(--green) url("../public/assets/images/icons/business-card.svg") no-repeat center center;
     }
   }
 
