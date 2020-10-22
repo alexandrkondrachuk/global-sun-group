@@ -225,6 +225,9 @@ jQuery(document).ready(function () {
     // remove any current navbar active classes
     jQuery(".navbar .nav-link.active").removeClass('active');
 // add active class to proper navbar item that matches window.location
+    if (location.pathname === '/') {
+        jQuery(`.navbar-nav .nav-link[href="/index.html"]`).addClass('active');
+    }
     jQuery('.navbar-nav .nav-link[href="' + location.pathname + '"]').addClass('active');
     jQuery('.navbar-nav .dropdown-item[href="' + location.pathname + '"]').addClass('active');
 
