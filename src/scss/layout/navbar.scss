@@ -229,7 +229,12 @@ $navbarHeight: response(132px);
     }
   }
 
-  .dropdown-item.active {
-    background-color: var(--green);
+  .dropdown-item {
+    &.active {
+      background-color: var(--green);
+    }
+    &.dropdown-item-mobile {
+      display: none;
+    }
   }
 }
