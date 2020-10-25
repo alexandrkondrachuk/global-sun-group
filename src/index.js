@@ -1,7 +1,9 @@
 import './scss/index.scss';
 import { Swiper, Navigation, Autoplay, Pagination, Lazy } from 'swiper';
 import { CountUp } from 'countup.js';
-import * as axios from "axios";
+import * as axios from 'axios';
+import 'ion-rangeslider';
+import * as scrollTo from 'scroll-to-element';
 
 // Navbar
 
@@ -235,6 +237,31 @@ jQuery(document).ready(function () {
         const dropdownItemsMobile = $(".navbar-nav .dropdown-item.dropdown-item-mobile");
         jQuery(dropdownItemsMobile).each((idx, el) => {
             jQuery(el).css('display', 'block');
+        });
+    }
+    // Range Slider
+    jQuery(".js-range-slider").ionRangeSlider({
+        type: "single",
+        grid: true,
+        min: 0,
+        max: 1000,
+        from: 200,
+        to: 800,
+        prefix: "$"
+    });
+    // Calculator form
+    jQuery('#investment-form').on('submit', (e) => {
+        e.preventDefault();
+    });
+    // Scroll to element
+    const toCalculatorButton = document.querySelector('.btn-first');
+    if (toCalculatorButton) {
+        jQuery(toCalculatorButton).on('click', (e) => {
+            scrollTo('#power-plants-investment-calculator', {
+                offset: -60,
+                ease: 'out-circ',
+                duration: 1500
+            });
         });
     }
 });

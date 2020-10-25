@@ -27,7 +27,8 @@
         <div class="container">
             <a class="navbar-brand" href="/index.html">
                 <figure>
-                    <p><img class="img-fluid" src="public/assets/images/mt-1168-home-logo.png" alt="Global Sun Group"></p>
+                    <p><img class="img-fluid" src="public/assets/images/mt-1168-home-logo.png" alt="Global Sun Group">
+                    </p>
                     <figcaption>
                         <h1 class="navbar-brand-text"><span class="navbar-brand-main">Global</span><small
                                 class="navbar-brand-secondary">Sun Group</small></h1>
@@ -44,7 +45,8 @@
                     <a class="nav-link" href="/index.html">Home <span class="sr-only">(current)</span></a>
                     <a class="nav-link" href="/our-power-plants.html">Our power plants</a>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="/about-us.html" id="navbarDropdownMenuLink" role="button"
+                        <a class="nav-link dropdown-toggle" href="/about-us.html" id="navbarDropdownMenuLink"
+                           role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             About us
                         </a>
@@ -111,7 +113,8 @@
                 <div class="col-md-4 col-sm-12">
                     <article class="description-box">
                         <figure>
-                            <p><img src="public/assets/images/mt-1168-home-icon3.png" alt="energy" class="img-fluid"></p>
+                            <p><img src="public/assets/images/mt-1168-home-icon3.png" alt="energy" class="img-fluid">
+                            </p>
                             <figcaption>CONTROL YOUR ENERGY</figcaption>
                         </figure>
                         <p class="description-box-text">Solar empowers both individuals and businesses in managing power
@@ -198,7 +201,68 @@
     </div>
     <!-- 6. Power Plants Investment Calculator -->
     <div id="power-plants-investment-calculator">
-        <h3>Investment calculator</h3>
+        <div class="container">
+            <h3 class="lead">Investment calculator</h3>
+            <h4 class="sub">Calculate your possible profit</h4>
+            <form id="investment-form" name="investment-form">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6">
+                        <div class="group-box">
+                            <div class="form-group">
+                                <label for="amount" class="d-none">Investment amount</label>
+                                <input type="text" class="form-control" id="amount" name="amount" aria-describedby="amountHelp"
+                                       placeholder="">
+                                <small id="amountHelp" class="form-text text-muted">Enter investment amount.</small>
+                                <div class="unit dollar"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <div class="group-box">
+                            <div class="form-group">
+                                <label for="amountSecondary" class="d-none">Investment amount</label>
+                                <input type="number" class="form-control js-range-slider" id="amountSecondary"
+                                       name="amountSecondary" aria-describedby="amountSecondaryHelp"
+                                       placeholder="Amount">
+                                <small id="amountSecondaryHelp" class="form-text text-muted">Choose investment
+                                    amount.</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-6">
+                        <div class="group-column">
+                            <div class="form-group">
+                                <label for="power">Power amount</label>
+                                <input type="number" class="form-control" id="power" placeholder="-" readonly>
+                                <div class="unit dollar"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="payment">Payments amount</label>
+                                <input type="number" class="form-control" id="payment" name="payment" placeholder="-" readonly>
+                                <div class="unit dollar"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <div class="group-column">
+                            <div class="form-group">
+                                <label for="roi">ROI</label>
+                                <input type="number" class="form-control" id="roi" name="roi" placeholder="-" readonly>
+                                <div class="unit percent"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="endInvestment">End investments</label>
+                                <input type="text" class="form-control" id="endInvestment" name="endInvestment" placeholder="-"
+                                       readonly>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-link btn-main">Calculate</button>
+            </form>
+        </div>
     </div>
     <!-- 7. Last News -->
     <div id="last-news">
@@ -238,7 +302,7 @@
             <p class="contact-us-lead">We work hard to earn the trust of our customers because we believe strong
                 relationships and long-term partnerships are fundamental to our sustained success. Drop us a line to get
                 more information about the project.</p>
-            <button class="btn btn-link contact-us-btn">Ask us a questions</button>
+            <a href="/contacts.html"><button class="btn btn-link contact-us-btn">Ask us a questions</button></a>
         </div>
     </div>
     <!-- 9. Our Team -->
@@ -367,7 +431,8 @@
                             <div class="col-md-12 col-lg-6">
                                 <div class="footer-column">
                                     <h3>ABOUT US</h3>
-                                    <p class="about-us-lead">With fossil fuels slowly dying out, a new energy source must come to light. Our
+                                    <p class="about-us-lead">With fossil fuels slowly dying out, a new energy source
+                                        must come to light. Our
                                         team is adamantly positive that it will be not wind, not atomic energy - but the
                                         solar energy that's gonna define our future!</p>
                                 </div>
@@ -376,11 +441,11 @@
                                 <div class="footer-column">
                                     <h3>MENU</h3>
                                     <nav class="nav flex-column">
-                                        <a class="nav-link active" href="#">Home</a>
-                                        <a class="nav-link" href="#">Our power plants</a>
-                                        <a class="nav-link" href="#">FAQ</a>
-                                        <a class="nav-link" href="#">Our team</a>
-                                        <a class="nav-link" href="#">Contacts</a>
+                                        <a class="nav-link active" href="/index.html">Home</a>
+                                        <a class="nav-link" href="/our-power-plants.html">Our power plants</a>
+                                        <a class="nav-link" href="/faq.html">FAQ</a>
+                                        <a class="nav-link" href="/team.html">Our team</a>
+                                        <a class="nav-link" href="/contacts.html">Contacts</a>
                                     </nav>
                                 </div>
                             </div>
@@ -413,9 +478,13 @@
                                 <div class="footer-column">
                                     <h3>CONTACT INFORMATION</h3>
                                     <div class="footer-address">
-                                        <p><span class="footer-icon"><img src="public/assets/images/icons/home.svg" alt="place"></span> 11559 Ventura Boulevard, Studio City, CA 91604</p>
-                                        <p><span class="footer-icon"><img src="public/assets/images/icons/phone.svg" alt="place"></span> (800) 123-0046</p>
-                                        <p><span class="footer-icon"><img src="public/assets/images/icons/email.svg" alt="place"></span> Info@demolink.org</p>
+                                        <p><span class="footer-icon"><img src="public/assets/images/icons/home.svg"
+                                                                          alt="place"></span> 11559 Ventura Boulevard,
+                                            Studio City, CA 91604</p>
+                                        <p><span class="footer-icon"><img src="public/assets/images/icons/phone.svg"
+                                                                          alt="place"></span> (800) 123-0046</p>
+                                        <p><span class="footer-icon"><img src="public/assets/images/icons/email.svg"
+                                                                          alt="place"></span> Info@demolink.org</p>
                                     </div>
                                 </div>
                             </div>
