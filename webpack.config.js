@@ -70,6 +70,8 @@ module.exports = {
         new HtmlWebpackPlugin({filename: 'faq.html', template: 'src/faq.html'}),
         new HtmlWebpackPlugin({filename: 'team.html', template: 'src/team.html'}),
         new HtmlWebpackPlugin({filename: 'contacts.html', template: 'src/contacts.html'}),
+        new HtmlWebpackPlugin({filename: 'log-in.html', template: 'src/log-in.html'}),
+        new HtmlWebpackPlugin({filename: 'registration.html', template: 'src/registration.html'}),
         new MiniCssExtractPlugin({filename: 'style.css'}),
         new CopyPlugin({
             patterns: [

@@ -17,6 +17,7 @@ $navbarHeight: response(132px);
   &.sticky {
     min-height: response(95px);
     border-bottom-color: var(--gray);
+
     .navbar-brand {
       figure {
         img {
@@ -102,6 +103,7 @@ $navbarHeight: response(132px);
     @include media-breakpoint-down(md) {
       font-weight: 400;
     }
+
     &:hover {
       color: var(--green);
     }
@@ -157,17 +159,22 @@ $navbarHeight: response(132px);
   .navbar-toggler {
     border-color: transparent;
     transition: background-color 0.5s linear;
+
     &:focus, &:active {
       outline: none;
     }
+
     .navbar-toggler-icon {
       background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 167, 118, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
     }
+
     &[aria-expanded="true"] {
       background-color: var(--green);
+
       &:focus, &:active {
         outline: none;
       }
+
       .navbar-toggler-icon {
         background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
       }
@@ -197,6 +204,7 @@ $navbarHeight: response(132px);
     color: var(--bg-black-secondary);
     transition: color 0.45s ease-in-out;
     font-size: response(16px);
+
     &:hover, &:focus {
       text-decoration: none;
       box-shadow: none;
@@ -233,8 +241,15 @@ $navbarHeight: response(132px);
     &.active {
       background-color: var(--green);
     }
+
     &.dropdown-item-mobile {
       display: none;
+    }
+  }
+
+  a {
+    &:hover, &:focus {
+      text-decoration: none;
     }
   }
 }
