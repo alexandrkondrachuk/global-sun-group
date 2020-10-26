@@ -249,8 +249,17 @@ jQuery(document).ready(function () {
         to: 800,
         prefix: "$"
     });
-    // Calculator form
+    // Forms
     jQuery('#investment-form').on('submit', (e) => {
+        e.preventDefault();
+    });
+    jQuery('#contacts-form').on('submit', (e) => {
+        e.preventDefault();
+    });
+    jQuery('#login-form').on('submit', (e) => {
+        e.preventDefault();
+    });
+    jQuery('#registration-form').on('submit', (e) => {
         e.preventDefault();
     });
     // Scroll to element
@@ -264,4 +273,11 @@ jQuery(document).ready(function () {
             });
         });
     }
+    // Fill modal
+    const fillButtons = document.querySelectorAll('button[data-action="fill"]');
+    jQuery(fillButtons).each((idx, el) => {
+        jQuery(el).on('click', (e) => {
+            $('#fillModal').modal('show');
+        });
+    });
 });
