@@ -232,6 +232,7 @@ jQuery(document).ready(function () {
     }
     jQuery('.navbar-nav .nav-link[href="' + location.pathname + '"]').addClass('active');
     jQuery('.navbar-nav .dropdown-item[href="' + location.pathname + '"]').addClass('active');
+    jQuery('.navbar-buttons a[href="' + location.pathname + '"]').addClass('active');
 
     if (jQuery(window).width() <= mobileBreakpoint) {
         const dropdownItemsMobile = $(".navbar-nav .dropdown-item.dropdown-item-mobile");

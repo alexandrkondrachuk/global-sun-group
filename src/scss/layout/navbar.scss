@@ -223,6 +223,14 @@ $navbarHeight: response(132px);
     }
   }
 
+  .navbar-buttons {
+    a.active {
+      button {
+        color: var(--green) !important;
+      }
+    }
+  }
+
   #log-in-button {
     .log-in-icon {
       background: url("../public/assets/images/icons/log-in.svg") no-repeat center center;
