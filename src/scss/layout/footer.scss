@@ -17,11 +17,13 @@
         letter-spacing: 1px;
         color: var(--green);
       }
+
       .about-us-lead {
         @extend .font-secondary;
         color: var(--gray);
         letter-spacing: 0;
       }
+
       .nav {
         .nav-link {
           padding-left: 0;
@@ -29,11 +31,13 @@
           color: var(--white);
           letter-spacing: 0;
           transition: color .45s ease-in-out;
+
           &:hover {
             color: var(--green);
           }
         }
       }
+
       .footer-last-post {
         article {
           h4 {
@@ -41,12 +45,14 @@
             letter-spacing: 0;
             color: #b7b6b4;
           }
+
           p {
             a {
               @extend .font-mono-4;
               letter-spacing: 0;
               color: var(--white);
               transition: color .45s ease-in-out;
+
               &:hover, &:focus {
                 text-decoration: none;
                 color: var(--green);
@@ -55,23 +61,36 @@
           }
         }
       }
+
       .footer-address {
         p {
           @extend .font-secondary;
           letter-spacing: 0;
           color: var(--white);
+
           &:first-of-type {
             color: var(--gray);
           }
         }
+
         .footer-icon {
           margin-right: response(5px);
           display: inline-block;
           width: response(24px);
           height: response(24px);
+
           img {
             width: response(24px);
             height: response(24px);
+          }
+        }
+
+        a {
+          color: var(--white);
+          transition: color .45s ease-in-out;
+          &:hover {
+            color: var(--green);
+            text-decoration: none;
           }
         }
       }
@@ -89,6 +108,7 @@
     bottom: 0;
     left: 0;
     background-color: #231f2c;
+
     p {
       margin: 0;
       @extend .font-secondary;
