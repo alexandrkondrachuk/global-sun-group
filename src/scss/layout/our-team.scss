@@ -70,6 +70,7 @@
       }
 
       p {
+        margin-bottom: 0;
         @extend .font-mono-5;
         letter-spacing: 0;
         color: var(--dark);

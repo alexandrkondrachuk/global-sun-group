@@ -36,6 +36,7 @@
     .team-member-info {
       p {
         @extend .font-mono-4;
+        margin-bottom: 0;
         text-align: center;
         color: var(--gray);
       }
