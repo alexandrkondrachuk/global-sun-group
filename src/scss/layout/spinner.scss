@@ -104,6 +104,7 @@
   }
 
   h2 {
+    position: relative;
     padding: response(10px);
     margin: response(40px) 0;
     font: normal 500 response(36px)/1.5 var(--font-family-sans-serif);
@@ -116,6 +117,13 @@
       display: inline-block;
       margin-right: 5px;
       max-width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translate3d(-25%, -10px, 0);
+      @include media-breakpoint-down(xl) {
+        transform: translate3d(-25%, -21px, 0);
+      }
     }
   }
 }

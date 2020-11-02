@@ -101,6 +101,22 @@
         display: block;
       }
     }
+
+    &.kwt {
+      &.ru {
+        &:before {
+          content: "кВт";
+          display: block;
+        }
+      }
+
+      &.en {
+        &:before {
+          content: "kWt";
+          display: block;
+        }
+      }
+    }
   }
 
   .irs--flat .irs-from, .irs--flat .irs-to, .irs--flat .irs-single {
@@ -129,6 +145,44 @@
     text-transform: uppercase;
     color: var(--green);
     @extend .font-mono-5;
+  }
+
+  .irs-min, .irs-max, .irs-to, .irs-single {
+    top: -20px;
+    @extend .font-secondary;
+  }
+
+  .irs-grid-text {
+    @extend .font-secondary;
+  }
+
+  .irs-grid {
+    bottom: -6px;
+  }
+
+  .irs-handle {
+    &:before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 28px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2;
+      border-radius: 50%;
+      transform: translate3d(-25%, -25%, 0);
+      background-color: var(--green);
+      transition: background-color .45s linear;
+      border: 1px solid #e1e4e9;
+    }
+
+    &:hover, &:active, &:focus {
+      &:before {
+        cursor: pointer;
+        background-color: var(--teal);
+      }
+    }
   }
 
 }

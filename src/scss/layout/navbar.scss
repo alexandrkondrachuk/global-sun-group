@@ -26,6 +26,22 @@ $navbarHeight: response(132px);
             max-width: 55%;
           }
         }
+
+        figcaption {
+          transform: scale(0.8) translate3d(10px, 8px, 0);
+
+          @include media-breakpoint-down(xl) {
+            position: absolute;
+            transform: translate3d(8px, 6px, 0);
+            transition: all .45s linear;
+          }
+
+          @include media-breakpoint-down(md) {
+            position: absolute;
+            transform: scale(0.8) translate3d(6px, 6px, 0);
+            transition: all .45s linear;
+          }
+        }
       }
     }
   }
@@ -48,9 +64,28 @@ $navbarHeight: response(132px);
 
   .navbar-brand {
     figure {
+      position: relative;
       display: flex;
       justify-content: center;
       align-items: center;
+
+      figcaption {
+        position: absolute;
+        transform: translate3d(22px, 8px, 0);
+        transition: all .45s linear;
+
+        @include media-breakpoint-down(xl) {
+          position: absolute;
+          transform: translate3d(18px, 8px, 0);
+          transition: all .45s linear;
+        }
+
+        @include media-breakpoint-down(md) {
+          position: absolute;
+          transform: translate3d(14px, 6px, 0);
+          transition: all .45s linear;
+        }
+      }
 
       p {
         margin: 0 response(32px) 0 0;
@@ -72,7 +107,7 @@ $navbarHeight: response(132px);
       margin: 0;
       display: flex;
       justify-content: center;
-      align-items: flex-start;
+      align-items: center;
       flex-direction: column;
 
       .navbar-brand-main {
@@ -82,7 +117,8 @@ $navbarHeight: response(132px);
       }
 
       .navbar-brand-secondary {
-        font: 200 response(14px)/1.2 var(--font-family-poppins);
+        padding-left: 30px;
+        font: 300 response(14px)/1.2 var(--font-family-poppins);
         letter-spacing: response(1px);
         color: var(--gray);
       }
@@ -191,8 +227,8 @@ $navbarHeight: response(132px);
     display: flex;
     @include media-breakpoint-down(md) {
       padding: .5rem 0;
-      flex-direction: column;
-      justify-content: flex-start;
+      flex-direction: row;
+      justify-content: space-around;
     }
   }
 
@@ -201,7 +237,7 @@ $navbarHeight: response(132px);
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    color: var(--bg-black-secondary);
+    color: var(--white);
     transition: color 0.45s ease-in-out;
     font-size: response(16px);
 
@@ -224,24 +260,56 @@ $navbarHeight: response(132px);
   }
 
   .navbar-buttons {
-    a.active {
-      button {
-        color: var(--green) !important;
+    a {
+      &:hover, &:active, &:focus {
+        #log-in-button {
+          .log-in-icon {
+            background: url("../public/assets/images/icons/log-in-green.svg") no-repeat center center;
+            background-size: response(24px) response(24px);
+            transition: background .45s linear;
+          }
+        }
+
+        #register-button {
+          .register-icon {
+            background: url("../public/assets/images/icons/register-green.svg") no-repeat center center;
+            background-size: response(24px) response(24px);
+            transition: background .45s linear;
+          }
+        }
       }
     }
   }
 
   #log-in-button {
+    justify-content: center;
+    align-items: center;
+    min-width: response(75px);
+
+    @include media-breakpoint-down(md) {
+      min-width: 120px;
+    }
+
     .log-in-icon {
-      background: url("../public/assets/images/icons/log-in.svg") no-repeat center center;
+      background: url("../public/assets/images/icons/log-in-white.svg") no-repeat center center;
       background-size: response(24px) response(24px);
+      transition: background .45s linear;
     }
   }
 
   #register-button {
+    justify-content: center;
+    align-items: center;
+    min-width: response(120px);
+
+    @include media-breakpoint-down(md) {
+      min-width: 120px;
+    }
+
     .register-icon {
-      background: url("../public/assets/images/icons/register.svg") no-repeat center center;
+      background: url("../public/assets/images/icons/register-white.svg") no-repeat center center;
       background-size: response(24px) response(24px);
+      transition: background .45s linear;
     }
   }
 
