@@ -3,7 +3,8 @@ import { config } from '../config';
 const { modal } = config;
 
 class Modal {
-    init() {
+
+    initFillModal() {
         const fillButtons = document.querySelectorAll(modal.selector);
         if (!fillButtons) return;
         jQuery(fillButtons).each((idx, el) => {
@@ -11,6 +12,10 @@ class Modal {
                 jQuery(modal.target).modal(Modal.ACTIVE_CLASS);
             });
         });
+    }
+
+    init() {
+        this.initFillModal();
     }
 }
 

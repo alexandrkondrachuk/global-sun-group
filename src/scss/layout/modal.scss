@@ -31,3 +31,50 @@
     }
   }
 }
+
+#powerPlantModal {
+
+  .modal-header {
+    background-color: var(--green);
+    border-radius: 0;
+    font-weight: 500;
+    color: var(--white);
+  }
+
+  .modal-content {
+    border-radius: 0;
+  }
+
+  .modal-header .close {
+    color: var(--white);
+
+    &:focus, &:active, &:hover {
+      outline: none;
+    }
+  }
+
+  .modal-body {
+    ul {
+      margin: response(16px) 0;
+      padding: 0;
+      list-style-type: none;
+
+      li {
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+        display: block;
+      }
+    }
+
+    .modal-text {
+      font: normal 500 response(16px)/1.2 var(--font-family-sans-serif);
+      color: var(--green);
+    }
+  }
+
+  .modal-footer {
+    border-radius: 0;
+    background-color: var(--green);
+  }
+
+}
