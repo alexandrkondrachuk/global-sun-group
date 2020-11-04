@@ -53,6 +53,11 @@
     }
   }
 
+  .modal-title {
+    @extend .font-mono-1;
+    color: var(--white);
+  }
+
   .modal-body {
     ul {
       margin: response(16px) 0;
@@ -63,6 +68,8 @@
         padding: 12px 0;
         border-bottom: 1px solid rgba(0, 0, 0, 0.4);
         display: block;
+        font: normal 500 response(14px)/1.2 var(--font-family-sans-serif);
+        color: var(--dark);
       }
     }
 
