@@ -74,14 +74,32 @@
         }
 
         .footer-icon {
+          display: inline-flex;
+          justify-content: center;
+          align-items: center;
           margin-right: response(5px);
-          display: inline-block;
           width: response(24px);
           height: response(24px);
 
           img {
             width: response(24px);
             height: response(24px);
+          }
+
+          .fa {
+            transform: scale(1.5);
+          }
+
+          .fa-youtube-play {
+            color: var(--red);
+          }
+
+          .fa-facebook-official {
+            color: rgb(8, 124, 234);
+          }
+
+          .fa-instagram {
+            color: var(--gray);
           }
         }
 

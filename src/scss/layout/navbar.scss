@@ -240,6 +240,7 @@ $navbarHeight: response(132px);
     color: var(--white);
     transition: color 0.45s ease-in-out;
     font-size: response(16px);
+    border-radius: 10px;
 
     &:hover, &:focus {
       text-decoration: none;
