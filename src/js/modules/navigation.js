@@ -58,14 +58,14 @@ class Navigation {
 
     setActiveLink() {
         // remove any current navbar active classes
-        jQuery(".navbar .nav-link.active").removeClass(Navigation.CLASS_ACTIVE_LINK);
+        /*jQuery(".navbar .nav-link.active").removeClass(Navigation.CLASS_ACTIVE_LINK);
         // add active class to proper navbar item that matches window.location
         if (location.pathname === '/') {
             jQuery(`.navbar-nav .nav-link[href="/index.html"]`).addClass(Navigation.CLASS_ACTIVE_LINK);
         }
         jQuery('.navbar-nav .nav-link[href="' + location.pathname + '"]').addClass(Navigation.CLASS_ACTIVE_LINK);
         jQuery('.navbar-nav .dropdown-item[href="' + location.pathname + '"]').addClass(Navigation.CLASS_ACTIVE_LINK);
-        jQuery('.navbar-buttons a[href="' + location.pathname + '"]').addClass(Navigation.CLASS_ACTIVE_LINK);
+        jQuery('.navbar-buttons a[href="' + location.pathname + '"]').addClass(Navigation.CLASS_ACTIVE_LINK);*/
 
         if (jQuery(window).width() <= mobileBreakpoint) {
             const dropdownItemsMobile = $(".navbar-nav .dropdown-item.dropdown-item-mobile");

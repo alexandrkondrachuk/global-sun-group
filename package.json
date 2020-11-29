@@ -26,12 +26,15 @@
     "webpack-dev-server": "^3.10.1"
   },
   "dependencies": {
+    "@babel/plugin-transform-runtime": "^7.12.1",
     "axios": "^0.20.0",
     "bootstrap": "^4.5.2",
     "copy-webpack-plugin": "^6.1.1",
     "countup.js": "^2.0.7",
     "ion-rangeslider": "^2.3.1",
     "jquery": "^3.5.1",
+    "lodash": "^4.17.20",
+    "moment": "^2.29.1",
     "scroll-to-element": "^2.0.3",
     "swiper": "^6.3.2"
   }

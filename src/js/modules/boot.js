@@ -1,4 +1,4 @@
-import { carousel, counter, form, modal, navigation, scrollToElement, topButton } from './index';
+import { carousel, counter, form, modal, navigation, scrollToElement, topButton, stations } from './index';
 
 export default class Boot {
     start() {
@@ -29,6 +29,9 @@ export default class Boot {
                     // 8.2. Enable collapse
                     jQuery('.collapse').collapse('hide');
                 }, 1000);
+                // Async methods
+                // 9. Stations Generator
+                stations.init();
             }
         });
     }

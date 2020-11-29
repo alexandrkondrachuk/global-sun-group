@@ -1,7 +1,28 @@
+const server = 'http://global-sun-group.local/';
+const apiServer = 'http://globalsungroup.com/sunserver/';
 const config = {
+    urls: {
+        serverURL: server,
+        contentApiURL: `${server}wp-json/wp/v2/`,
+        contentPostsApiURL: `${server}wp-json/wp/v2/posts`,
+        stationsApiURL: `${apiServer}api/PowerPlants/`,
+        registrationApiURL: `${apiServer}api/Account/Register`,
+        authAPIURL: `${apiServer}/Token`,
+    },
+    api: {
+        categories: [45], // WP categories
+    },
+    languages: {
+        'ru-RU': 'ru',
+        'en-US': 'en',
+    },
+    contentModal: {
+        'ru': '#powerPlantModal',
+        'en': '#powerPlantModalEN',
+    },
+    dateFormat: 'DD.MM.YYYY',
     mobileBreakpoint: 992,
     carousel: {
-        src: './public/power-plants.json',
         selector: '.swiper-container',
         options: {
             // Disable preloading of all images
@@ -60,7 +81,7 @@ const config = {
         selector: '.js-range-slider',
         options: {
             type: "single",
-            grid: true,
+            grid: false,
             min: 0,
             max: 1000,
             from: 200,

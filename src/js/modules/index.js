@@ -5,6 +5,7 @@ import TopButton from './top-button';
 import Form from './form';
 import ScrollToElement from './scroll-to-element';
 import Modal from './modal';
+import Stations from './stations';
 import Boot from './boot';
 
 const navigation = new Navigation();
@@ -14,6 +15,7 @@ const topButton = new TopButton();
 const form = new Form();
 const scrollToElement = new ScrollToElement();
 const modal = new Modal();
+const stations = new Stations();
 const boot = new Boot();
 export {
     navigation,
@@ -23,5 +25,6 @@ export {
     form,
     scrollToElement,
     modal,
+    stations,
     boot,
 };

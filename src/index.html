@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-US">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -80,7 +80,7 @@
     <!-- 2. Video header  -->
     <div id="video-header">
         <video autoplay muted loop id="header-video">
-            <source src="public/video.mp4" type="video/mp4">
+            <source src="public/startvideo.mp4" type="video/mp4">
         </video>
         <div class="container">
             <div class="row">
@@ -556,6 +556,42 @@
             </div>
         </div>
     </div>
+    <div id="power-plant-en">
+        <!-- Modal Power Plant -->
+        <div class="modal fade" id="powerPlantModalEN" tabindex="-1" role="dialog" aria-labelledby="powerPlantModalTitleEN"
+             aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="powerPlantModalLongTitleEN" data-value="pp-name"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <ul>
+                            <li><span class="modal-text">Station name:</span> <span data-value="pp-name"></span>
+                            </li>
+                            <li><span class="modal-text">Address:</span> <span data-value="pp-address"></span></li>
+                            <li><span class="modal-text">ROI:</span> <span data-value="pp-roi"></span> <span
+                                    data-unit="percent">%</span></li>
+                            <li><span class="modal-text">Minimum power:</span> <span data-value="pp-min-power"></span>
+                                <span data-unit="kwt">kWh</span></li>
+                            <li><span class="modal-text">Price $ per kWh:</span> <span data-value="pp-price"></span>
+                            </li>
+                            <li><span class="modal-text">Start of construction:</span> <span data-value="pp-start-date"></span>
+                            </li>
+                            <li><span class="modal-text">End of construction:</span> <span data-value="pp-end-date"></span>
+                            </li>
+                            <li><span class="modal-text">End of investment:</span> <span
+                                    data-value="pp-investment-date"></span></li>
+                        </ul>
+                    </div>
+                    <div class="modal-footer"></div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div id="power-plant">
         <!-- Modal Power Plant -->
         <div class="modal fade" id="powerPlantModal" tabindex="-1" role="dialog" aria-labelledby="powerPlantModalTitle"
@@ -563,29 +599,28 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="powerPlantModalLongTitle" data-value="pp-name">Kamuthi Solar Power
-                            Project</h5>
+                        <h5 class="modal-title" id="powerPlantModalLongTitle" data-value="pp-name"></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
                         <ul>
-                            <li><span class="modal-text">Имя станции:</span> <span data-value="pp-name">Kamuthi Solar Power Project</span>
+                            <li><span class="modal-text">Имя станции:</span> <span data-value="pp-name"></span>
                             </li>
-                            <li><span class="modal-text">Адрес:</span> <span data-value="pp-address">India</span></li>
+                            <li><span class="modal-text">Адрес:</span> <span data-value="pp-address"></span></li>
                             <li><span class="modal-text">ROI:</span> <span data-value="pp-roi">11</span> <span
                                     data-unit="percent">%</span></li>
-                            <li><span class="modal-text">Минимальная мощность:</span> <span data-value="pp-min-power">648</span>
+                            <li><span class="modal-text">Минимальная мощность:</span> <span data-value="pp-min-power"></span>
                                 <span data-unit="kwt">кВт</span></li>
-                            <li><span class="modal-text">Цена $/кВт:</span> <span data-value="pp-price">12.49</span>
+                            <li><span class="modal-text">Цена $/кВт:</span> <span data-value="pp-price"></span>
                             </li>
-                            <li><span class="modal-text">Начало строительства:</span> <span data-value="pp-start-date">2020-10-14 00:00</span>
+                            <li><span class="modal-text">Начало строительства:</span> <span data-value="pp-start-date"></span>
                             </li>
-                            <li><span class="modal-text">Окончание строительства:</span> <span data-value="pp-end-date">2021-10-14 00:00</span>
+                            <li><span class="modal-text">Окончание строительства:</span> <span data-value="pp-end-date"></span>
                             </li>
                             <li><span class="modal-text">Окончание инвестиций:</span> <span
-                                    data-value="pp-investment-date">2021-10-14 00:00</span></li>
+                                    data-value="pp-investment-date"></span></li>
                         </ul>
                     </div>
                     <div class="modal-footer"></div>

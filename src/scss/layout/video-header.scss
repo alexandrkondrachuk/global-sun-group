@@ -11,8 +11,8 @@
   height: response(592px);
   overflow: hidden;
 
-  @include media-breakpoint-down(ss) {
-    height: response(340px);
+  @include media-breakpoint-down(sm) {
+    height: response(490px);
   }
 
   #header-video {
@@ -23,6 +23,10 @@
     top: 0;
     left: 0;
     filter: brightness(.55);
+
+    @include media-breakpoint-down(sm) {
+      width: auto;
+    }
   }
 
   .container {
