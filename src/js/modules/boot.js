@@ -1,3 +1,4 @@
+import { config } from '../config';
 import { carousel, counter, form, modal, navigation, scrollToElement, topButton, stations } from './index';
 
 export default class Boot {
@@ -11,8 +12,6 @@ export default class Boot {
                     jQuery(main).fadeIn();
                     // 1. Navigation
                     navigation.init();
-                    // 2. Carousel
-                    carousel.init();
                     // 3. Statistic counter
                     counter.init();
                     // 4. To top button
@@ -28,8 +27,10 @@ export default class Boot {
                     jQuery('[data-toggle="tooltip"]').tooltip();
                     // 8.2. Enable collapse
                     jQuery('.collapse').collapse('hide');
-                }, 1000);
+                }, config.spinnerTimer);
                 // Async methods
+                // 2. Carousel
+                carousel.init();
                 // 9. Stations Generator
                 stations.init();
             }

@@ -56,6 +56,7 @@ export default class Carousel {
                             'pp-address': 'Address',
                             'pp-roi': 'Roi',
                             'pp-min-power': 'MinPower',
+                            'pp-price-per-kwt': 'PaymentPerKW',
                             'pp-price': 'PricePerKW',
                             'pp-start-date': 'StartBuildingDate',
                             'pp-end-date': 'EndBuildingDate',

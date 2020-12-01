@@ -14,6 +14,7 @@ export default class Stations {
                 'station-roi': 'Roi',
                 'station-min-power': 'MinPower',
                 'station-power-price': 'PricePerKW',
+                'station-payouts': 'PaymentPerKW',
                 'station-build-start': 'StartBuildingDate',
                 'station-build-end': 'EndBuildingDate',
                 'station-investment-end': 'EndInvestmentDate'
