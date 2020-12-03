@@ -16,6 +16,7 @@ export default class Carousel {
 
             const swiper = new Swiper(selector, options);
             if (mergedData) {
+                window[config.cache] = mergedData;
                 mergedData.forEach((slide) => {
                     const s = `
                     <div class="swiper-slide" data-target="power-plant" data-index="${_.get(slide, 'Id')}">

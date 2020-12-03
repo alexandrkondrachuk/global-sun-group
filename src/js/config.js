@@ -1,7 +1,9 @@
-const server = 'http://global-sun-group.local/';
+const server = 'http://globalsungroup.com/';
 const apiServer = 'http://globalsungroup.com/sunserver/';
 const config = {
     spinnerTimer: 2 * 1000,
+    cache: 'stationsCache',
+    precision: 2,
     urls: {
         serverURL: server,
         contentApiURL: `${server}wp-json/wp/v2/`,
@@ -84,8 +86,8 @@ const config = {
             type: "single",
             grid: false,
             min: 0,
-            max: 1000,
-            from: 200,
+            max: 100000,
+            from: 10000,
             to: 800,
             prefix: "$"
         },

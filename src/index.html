@@ -219,7 +219,7 @@
                         <div class="group-box">
                             <div class="form-group">
                                 <label for="amount" class="d-none">Сумма инвестиций</label>
-                                <input type="text" class="form-control" id="amount" name="amount"
+                                <input type="number" class="form-control" id="amount" name="amount"
                                        aria-describedby="amountHelp"
                                        placeholder="">
                                 <small id="amountHelp" class="form-text text-muted">Введите сумму инвестиции.</small>
@@ -245,12 +245,12 @@
                         <div class="group-column">
                             <div class="form-group">
                                 <label for="power">Объем мощности</label>
-                                <input type="number" class="form-control" id="power" placeholder="-" readonly>
+                                <input type="text" class="form-control" id="power" placeholder="-" readonly>
                                 <div class="unit ru kwt"></div>
                             </div>
                             <div class="form-group">
                                 <label for="payment">Сумма выплат (мес.)</label>
-                                <input type="number" class="form-control" id="payment" name="payment" placeholder="-"
+                                <input type="text" class="form-control" id="payment" name="payment" placeholder="-"
                                        readonly>
                                 <div class="unit dollar"></div>
                             </div>
@@ -272,7 +272,7 @@
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-link btn-main" data-action="fill">Рассчитать</button>
+                <button type="submit" class="btn btn-link btn-main">Рассчитать</button>
             </form>
         </div>
     </div>

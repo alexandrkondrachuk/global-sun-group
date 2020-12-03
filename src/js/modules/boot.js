@@ -12,6 +12,8 @@ export default class Boot {
                     jQuery(main).fadeIn();
                     // 1. Navigation
                     navigation.init();
+                    // 2. Carousel
+                    carousel.init();
                     // 3. Statistic counter
                     counter.init();
                     // 4. To top button
@@ -29,8 +31,6 @@ export default class Boot {
                     jQuery('.collapse').collapse('hide');
                 }, config.spinnerTimer);
                 // Async methods
-                // 2. Carousel
-                carousel.init();
                 // 9. Stations Generator
                 stations.init();
             }
