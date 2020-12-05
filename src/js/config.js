@@ -3,6 +3,10 @@ const apiServer = 'http://globalsungroup.com/sunserver/';
 const config = {
     spinnerTimer: 2 * 1000,
     cache: 'stationsCache',
+    store: {
+        authInfo: 'authInfo',
+        auth: 'auth'
+    },
     precision: 2,
     urls: {
         serverURL: server,
@@ -10,7 +14,7 @@ const config = {
         contentPostsApiURL: `${server}wp-json/wp/v2/posts`,
         stationsApiURL: `${apiServer}api/PowerPlants/`,
         registrationApiURL: `${apiServer}api/Account/Register`,
-        authAPIURL: `${apiServer}/Token`,
+        authAPIURL: `${apiServer}Token`,
     },
     api: {
         categories: [45], // WP categories

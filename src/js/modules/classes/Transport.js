@@ -1,8 +1,10 @@
 import { config } from '../../config';
 import * as axios from 'axios';
 import * as _ from 'lodash';
-
+import * as qs from 'querystring';
+console.log(qs);
 export default class Transport {
+    // Get stations info from two servers
     static async getStations() {
         try {
             // Get Stations from the WP REST API
@@ -30,8 +32,27 @@ export default class Transport {
             throw new Error(err);
         }
     }
+
+    // Auth Process to the sun server
+    static async doAuth(model = null) {
+        try {
+            if(!model) return;
+            return await axios({
+                url: config.urls.authAPIURL,
+                method: Transport.AUTH_METHOD,
+                headers: Transport.AUTH_HEADERS,
+                data: qs.stringify(model)
+            });
+        } catch (e) {
+            throw new Error(e);
+        }
+    }
 }
 
 Transport.STATUS_OK = 200;
 Transport.DATA_ATTR_FOREIGN_KEY = 'acf.power-plant-foreign-id';
 Transport.DATA_ATTR_KEY = 'Id';
+Transport.AUTH_METHOD = 'POST';
+Transport.AUTH_HEADERS = {
+    'Content-Type': 'application/x-www-form-urlencoded'
+};

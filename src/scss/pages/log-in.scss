@@ -54,4 +54,35 @@
       }
     }
   }
+
+  .custom-control-label {
+    margin: 10px 0;
+    padding: 2px 0 0 10px;
+    @extend .font-secondary;
+    &:after, &:before {
+      width: response(24px);
+      height: response(24px);
+    }
+    color: var(--green);
+  }
+
+  .custom-control-input:checked ~ .custom-control-label::before {
+    color: var(--white);
+    border-color: var(--green);
+    background-color: var(--green);
+  }
+
+  .visibility-btn {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background: url(../public/assets/images/icons/invisible.svg) center center / 20px 20px no-repeat;
+    transition: all .45s linear;
+    &.active {
+      background: url(../public/assets/images/icons/view.svg) center center / 20px 20px no-repeat;
+    }
+    &:hover {
+      cursor: pointer;
+    }
+  }
 }

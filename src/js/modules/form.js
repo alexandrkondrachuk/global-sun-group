@@ -2,6 +2,8 @@ import 'ion-rangeslider';
 import { config } from '../config';
 import * as _ from 'lodash';
 import moment from 'moment';
+import Transport from './classes/Transport';
+import Register from './classes/register';
 
 const { selector, options } = config.rangeSlider;
 const { selectors } = config.forms;
@@ -12,14 +14,21 @@ const investFormModel = {
     roi: 0,
     endInvestment: null,
 };
+const loginFormModel = {
+    username: '',
+    password: '',
+    grant_type: 'password',
+    save: true,
+    show: false,
+};
 export default class Form {
-
+    // Invest Form Handlers
     handleInvestmentForm() {
         jQuery(selectors.investment).on('submit', (e) => {
             e.preventDefault();
             const cache = window[config.cache];
             const amountElement = $('#power') || $('#power')[0];
-            const paymentElement =  $('#payment') || $('#payment')[0];
+            const paymentElement = $('#payment') || $('#payment')[0];
             const roiElement = $('#roi') || $('#roi')[0];
             const endInvestmentsElement = $('#endInvestment') || $('#endInvestment')[0];
 
@@ -78,9 +87,84 @@ export default class Form {
         });
     }
 
+    // Login Form Handlers
+    handleLoginFormInputs() {
+        const loginField = $('#login') ? $('#login')[0] : null;
+        const passwordField = $('#password') ? $('#password')[0] : null;
+        const saveField = $('#save') ? $('#save')[0] : null;
+        const visibilityElement = $('#visibility') ? $('#visibility')[0] : null;
+        const submitButton = $('#login-submit') ? $('#login-submit')[0] : null;
+        const isReadyElements = !!(loginField) && !!(passwordField) && !!(saveField) && !!(visibilityElement) && !!(submitButton);
+
+        // Check auth info in store
+        if (Register.has(config.store.auth)) {
+            const auth = Register.get(config.store.auth);
+            const username = _.get(auth, 'username');
+            const password = _.get(auth, 'password');
+            $(loginField).val(username);
+            $(passwordField).val(password);
+            _.set(loginFormModel, 'username', username);
+            _.set(loginFormModel, 'password', password);
+        }
+
+        if (isReadyElements) {
+            $(loginField).on('input', (e) => {
+                const value = _.get(e, 'target.value', '');
+                _.set(loginFormModel, 'username', value);
+            });
+            $(passwordField).on('input', (e) => {
+                const value = _.get(e, 'target.value', '');
+                _.set(loginFormModel, 'password', value);
+            });
+            $(saveField).on('change', (e) => {
+                const value = _.get(e, 'target.checked', '');
+                _.set(loginFormModel, 'save', value);
+            });
+            $(visibilityElement).on('click', (e) => {
+                const value = !(_.get(loginFormModel, 'show'));
+                if (value) {
+                    $(visibilityElement).addClass('active');
+                    $(passwordField).attr('type', 'text');
+                } else {
+                    $(visibilityElement).removeClass('active');
+                    $(passwordField).attr('type', 'password');
+                }
+                _.set(loginFormModel, 'show', value);
+            });
+        }
+    }
+
     handleLoginForm() {
-        jQuery(selectors.login).on('submit', (e) => {
+        jQuery(selectors.login).on('submit', async (e) => {
             e.preventDefault();
+            const submitButton = $('#login-submit') ? $('#login-submit')[0] : null;
+            const loginError = $('#login-error') ? $('#login-error')[0] : null;
+            // Disable Submit button
+            if (submitButton) {
+                $(submitButton).attr('disabled', 'disabled');
+            }
+            try {
+                const auth = await Transport.doAuth(loginFormModel);
+                const authInfo = _.get(auth, 'data', null);
+                const authStatus = _.get(auth, 'status', 404);
+
+                if (authInfo && authStatus === Transport.STATUS_OK) {
+                    if (loginError) {
+                        $(loginError).fadeOut();
+                    }
+                    // Save Auth info to local storage
+                    if (_.get(loginFormModel, 'save', false)) {
+                        Register.set(config.store.auth, loginFormModel);
+                    }
+                    Register.set(config.store.authInfo, authInfo);
+                }
+            } catch (err) {
+                if (submitButton && loginError) {
+                    $(submitButton).removeAttr('disabled');
+                    $(loginError).fadeIn();
+                }
+                throw new Error(err);
+            }
         });
     }
 
@@ -98,6 +182,7 @@ export default class Form {
         // 2. Contacts form
         this.handleContactsForm();
         // 3. Login form
+        this.handleLoginFormInputs();
         this.handleLoginForm();
         // 4. Registration form
         this.handleRegistrationForm();
