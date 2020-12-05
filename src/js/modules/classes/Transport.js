@@ -2,7 +2,7 @@ import { config } from '../../config';
 import * as axios from 'axios';
 import * as _ from 'lodash';
 import * as qs from 'querystring';
-console.log(qs);
+
 export default class Transport {
     // Get stations info from two servers
     static async getStations() {
@@ -36,13 +36,23 @@ export default class Transport {
     // Auth Process to the sun server
     static async doAuth(model = null) {
         try {
-            if(!model) return;
+            if (!model) return;
             return await axios({
                 url: config.urls.authAPIURL,
                 method: Transport.AUTH_METHOD,
                 headers: Transport.AUTH_HEADERS,
                 data: qs.stringify(model)
             });
+        } catch (e) {
+            throw new Error(e);
+        }
+    }
+
+    // Get user info
+    static async getUserInfo(token = null) {
+        if (!token) return;
+        try {
+            return await axios.get(config.urls.userDataURL, { headers: _.merge(Transport.TOKEN_HEADER, { 'Authorization': `Bearer ${token}` }) });
         } catch (e) {
             throw new Error(e);
         }
@@ -55,4 +65,7 @@ Transport.DATA_ATTR_KEY = 'Id';
 Transport.AUTH_METHOD = 'POST';
 Transport.AUTH_HEADERS = {
     'Content-Type': 'application/x-www-form-urlencoded'
+};
+Transport.TOKEN_HEADER = {
+    'Authorization': 'Bearer '
 };

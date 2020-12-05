@@ -21,6 +21,17 @@ const loginFormModel = {
     save: true,
     show: false,
 };
+let userInfoModel = {
+    BTCAddress: '',
+    Balance: 0,
+    BirthDate: null,
+    Email: '',
+    FirstName: '',
+    LastName: '',
+    PhoneNumber: '',
+    Sex: 1,
+};
+
 export default class Form {
     // Invest Form Handlers
     handleInvestmentForm() {
@@ -35,7 +46,7 @@ export default class Form {
             if (cache && amountElement && paymentElement && roiElement && endInvestmentsElement) {
                 const last = (Array.isArray(cache) && cache.length > 0) ? cache[0] : null;
                 if (!last) return;
-                console.log('station data: ', last);
+
                 const powerAmount = investFormModel.value / _.get(last, 'PricePerKW', 0);
                 const payoutAmount = powerAmount * _.get(last, 'PaymentPerKW', 0);
                 const roi = _.get(last, 'Roi', 0);
@@ -139,11 +150,14 @@ export default class Form {
             e.preventDefault();
             const submitButton = $('#login-submit') ? $('#login-submit')[0] : null;
             const loginError = $('#login-error') ? $('#login-error')[0] : null;
+            const navbarButtons = $('#navbar-buttons') ? $('#navbar-buttons')[0] : null;
+            const userPanel = $('#user-panel') ? $('#user-panel')[0] : null;
             // Disable Submit button
             if (submitButton) {
                 $(submitButton).attr('disabled', 'disabled');
             }
             try {
+                // Auth process
                 const auth = await Transport.doAuth(loginFormModel);
                 const authInfo = _.get(auth, 'data', null);
                 const authStatus = _.get(auth, 'status', 404);
@@ -153,10 +167,32 @@ export default class Form {
                         $(loginError).fadeOut();
                     }
                     // Save Auth info to local storage
-                    if (_.get(loginFormModel, 'save', false)) {
-                        Register.set(config.store.auth, loginFormModel);
-                    }
+                    Register.set(config.store.auth, loginFormModel);
                     Register.set(config.store.authInfo, authInfo);
+                    // Get user info and handle it
+                    const userInfo = await Transport.getUserInfo(_.get(authInfo, 'access_token'));
+                    const userInfoStatus = _.get(userInfo, 'status', 404);
+                    const userInfoData = _.get(userInfo, 'data', null);
+                    // Work with DOM
+                    const userLoginElement = $('#user-login') ? $('#user-login')[0] : null;
+                    const userBalanceElement = $('#user-balance') ? $('#user-balance')[0] : null;
+                    if (userInfoStatus === Transport.STATUS_OK && userInfoData) {
+                        userInfoModel = _.merge(userInfoModel, userInfoData);
+                        Register.set(config.store.userInfo, userInfoModel);
+                        // Set user info
+                        if  (userLoginElement && userBalanceElement) {
+                            $(userLoginElement).text(_.get(userInfoModel, 'Email', 'user@test.com'));
+                            $(userBalanceElement).text(_.get(userInfoModel, 'Balance', 0));
+                        }
+                    }
+                    // Show user info panel
+                    if (navbarButtons && userPanel) {
+                        $(navbarButtons).fadeOut('slow', function () {
+                            $(userPanel).fadeIn('slow');
+                            // Redirect after login
+                            _.delay(() => window.location.replace(config.urls.redirectLoginURL), config.loginRedirectDelay);
+                        });
+                    }
                 }
             } catch (err) {
                 if (submitButton && loginError) {

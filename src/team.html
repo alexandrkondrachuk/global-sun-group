@@ -58,7 +58,7 @@
                     </li>
                     <a class="nav-link" href="/contacts.html">Контакты</a>
                 </div>
-                <div class="navbar-buttons">
+                <div id="navbar-buttons" class="navbar-buttons">
                     <a href="/log-in.html">
                         <button id="log-in-button" class="btn btn-link btn-main"><span class="log-in-icon navbar-icon"></span>
                             Вход
@@ -69,6 +69,21 @@
                                 class="register-icon navbar-icon"></span>Регистрация
                         </button>
                     </a>
+                </div>
+                <div id="user-panel" class="user-panel">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="user-avatar">
+                                <img src="public/assets/images/icons/avatars/64_3.png" alt="avatar">
+                            </span>
+                            <span id="user-login" class="user-login">testuser@gmail.com</span>
+                        </button>
+                        <div id="dropdown-menu-user-panel" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <span class="dropdown-item" href="#"><i class="fa fa-credit-card-alt" aria-hidden="true"></i> Баланс <span id="user-balance" class="balance-value">32.2</span> <span class="balance-unit">$</span></span>
+                            <a class="dropdown-item" href="#"><i class="fa fa-sign-in" aria-hidden="true"></i> Личный кабинет</a>
+                            <span id="log-out-button" class="dropdown-item" href="#"><i class="fa fa-sign-out" aria-hidden="true"></i> Выход</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

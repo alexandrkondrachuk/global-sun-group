@@ -1,5 +1,5 @@
 import { config } from '../config';
-import { carousel, counter, form, modal, navigation, scrollToElement, topButton, stations } from './index';
+import { carousel, counter, form, modal, navigation, scrollToElement, topButton, stations, userInfo } from './index';
 
 export default class Boot {
     start() {
@@ -29,6 +29,8 @@ export default class Boot {
                     jQuery('[data-toggle="tooltip"]').tooltip();
                     // 8.2. Enable collapse
                     jQuery('.collapse').collapse('hide');
+                    // 10. User info panel
+                    userInfo.init();
                 }, config.spinnerTimer);
                 // Async methods
                 // 9. Stations Generator

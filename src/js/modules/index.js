@@ -6,6 +6,7 @@ import Form from './form';
 import ScrollToElement from './scroll-to-element';
 import Modal from './modal';
 import Stations from './stations';
+import UserInfo from './user-info';
 import Boot from './boot';
 
 const navigation = new Navigation();
@@ -16,6 +17,7 @@ const form = new Form();
 const scrollToElement = new ScrollToElement();
 const modal = new Modal();
 const stations = new Stations();
+const userInfo = new UserInfo();
 const boot = new Boot();
 export {
     navigation,
@@ -26,5 +28,6 @@ export {
     scrollToElement,
     modal,
     stations,
+    userInfo,
     boot,
 };

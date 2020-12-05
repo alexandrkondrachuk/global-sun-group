@@ -2,19 +2,24 @@ const server = 'http://globalsungroup.com/';
 const apiServer = 'http://globalsungroup.com/sunserver/';
 const config = {
     spinnerTimer: 2 * 1000,
+    loginRedirectDelay: 0.5 * 1000,
     cache: 'stationsCache',
     store: {
         authInfo: 'authInfo',
-        auth: 'auth'
+        auth: 'auth',
+        userInfo: 'userInfo'
     },
     precision: 2,
     urls: {
+        redirectLoginURL: '/index.html',
+        redirectLogoutURL: '/index.html',
         serverURL: server,
         contentApiURL: `${server}wp-json/wp/v2/`,
         contentPostsApiURL: `${server}wp-json/wp/v2/posts`,
         stationsApiURL: `${apiServer}api/PowerPlants/`,
         registrationApiURL: `${apiServer}api/Account/Register`,
         authAPIURL: `${apiServer}Token`,
+        userDataURL: `${apiServer}api/Account/GetUserData`,
     },
     api: {
         categories: [45], // WP categories
