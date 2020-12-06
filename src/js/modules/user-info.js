@@ -1,11 +1,20 @@
 import Register from './classes/register';
+import RegisterSession from './classes/register-session';
 import { config } from '../config';
-import * as _ from "lodash";
+import * as _ from 'lodash';
 
 export default class UserInfo {
     init() {
-        if (Register.has(config.store.auth) && Register.has(config.store.userInfo)) {
-            const userInfoModel = Register.get(config.store.userInfo);
+        this.render();
+        this.render('session');
+    }
+
+    // Render user info
+    // @type - local | session
+    render(type = 'local') {
+        const Register_ = (type === 'local') ? Register : RegisterSession;
+        if (Register_.has(config.store.auth) && Register_.has(config.store.userInfo)) {
+            const userInfoModel = Register_.get(config.store.userInfo);
             const navbarButtons = $('#navbar-buttons') ? $('#navbar-buttons')[0] : null;
             const userPanel = $('#user-panel') ? $('#user-panel')[0] : null;
             const userLoginElement = $('#user-login') ? $('#user-login')[0] : null;
@@ -21,9 +30,9 @@ export default class UserInfo {
             // Logout from the cabinet
             if (logOutButton) {
                 $(logOutButton).on('click', (e) => {
-                   Register.remove(config.store.userInfo);
-                   Register.remove(config.store.auth);
-                   Register.remove(config.store.authInfo);
+                    Register_.remove(config.store.userInfo);
+                    Register_.remove(config.store.auth);
+                    Register_.remove(config.store.authInfo);
                     window.location.replace(config.urls.redirectLogoutURL);
                 });
             }
@@ -32,3 +41,8 @@ export default class UserInfo {
         }
     }
 }
+
+UserInfo.TYPES = {
+    local: 'Register',
+    session: 'RegisterSession'
+};

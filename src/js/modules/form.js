@@ -4,6 +4,7 @@ import * as _ from 'lodash';
 import moment from 'moment';
 import Transport from './classes/Transport';
 import Register from './classes/register';
+import RegisterSession from './classes/register-session';
 
 const { selector, options } = config.rangeSlider;
 const { selectors } = config.forms;
@@ -108,15 +109,8 @@ export default class Form {
         const isReadyElements = !!(loginField) && !!(passwordField) && !!(saveField) && !!(visibilityElement) && !!(submitButton);
 
         // Check auth info in store
-        if (Register.has(config.store.auth)) {
-            const auth = Register.get(config.store.auth);
-            const username = _.get(auth, 'username');
-            const password = _.get(auth, 'password');
-            $(loginField).val(username);
-            $(passwordField).val(password);
-            _.set(loginFormModel, 'username', username);
-            _.set(loginFormModel, 'password', password);
-        }
+        this.setAuthData('local', loginField, passwordField, loginFormModel);
+        this.setAuthData('session', loginField, passwordField, loginFormModel);
 
         if (isReadyElements) {
             $(loginField).on('input', (e) => {
@@ -161,14 +155,20 @@ export default class Form {
                 const auth = await Transport.doAuth(loginFormModel);
                 const authInfo = _.get(auth, 'data', null);
                 const authStatus = _.get(auth, 'status', 404);
+                const isSave = _.get(loginFormModel, 'save', false);
 
                 if (authInfo && authStatus === Transport.STATUS_OK) {
                     if (loginError) {
                         $(loginError).fadeOut();
                     }
-                    // Save Auth info to local storage
-                    Register.set(config.store.auth, loginFormModel);
-                    Register.set(config.store.authInfo, authInfo);
+                    // Save Auth info to local storage or session storage
+                    if (isSave) {
+                        Register.set(config.store.auth, loginFormModel);
+                        Register.set(config.store.authInfo, authInfo);
+                    } else {
+                        RegisterSession.set(config.store.auth, loginFormModel);
+                        RegisterSession.set(config.store.authInfo, authInfo);
+                    }
                     // Get user info and handle it
                     const userInfo = await Transport.getUserInfo(_.get(authInfo, 'access_token'));
                     const userInfoStatus = _.get(userInfo, 'status', 404);
@@ -178,9 +178,13 @@ export default class Form {
                     const userBalanceElement = $('#user-balance') ? $('#user-balance')[0] : null;
                     if (userInfoStatus === Transport.STATUS_OK && userInfoData) {
                         userInfoModel = _.merge(userInfoModel, userInfoData);
-                        Register.set(config.store.userInfo, userInfoModel);
+                        if (isSave) {
+                            Register.set(config.store.userInfo, userInfoModel);
+                        } else {
+                            RegisterSession.set(config.store.userInfo, userInfoModel);
+                        }
                         // Set user info
-                        if  (userLoginElement && userBalanceElement) {
+                        if (userLoginElement && userBalanceElement) {
                             $(userLoginElement).text(_.get(userInfoModel, 'Email', 'user@test.com'));
                             $(userBalanceElement).text(_.get(userInfoModel, 'Balance', 0));
                         }
@@ -208,6 +212,19 @@ export default class Form {
         jQuery(selectors.registration).on('submit', (e) => {
             e.preventDefault();
         });
+    }
+
+    setAuthData(type = 'local', loginField, passwordField, loginFormModel) {
+        const Register_ = (type === 'local') ? Register : RegisterSession;
+        if (Register_.has(config.store.auth)) {
+            const auth = Register_.get(config.store.auth);
+            const username = _.get(auth, 'username');
+            const password = _.get(auth, 'password');
+            $(loginField).val(username);
+            $(passwordField).val(password);
+            _.set(loginFormModel, 'username', username);
+            _.set(loginFormModel, 'password', password);
+        }
     }
 
     init() {
