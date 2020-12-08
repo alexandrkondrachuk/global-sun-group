@@ -54,4 +54,32 @@
       }
     }
   }
+
+  .visibility {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background: url(../public/assets/images/icons/invisible.svg) center center / 20px 20px no-repeat;
+    transition: all .45s linear;
+    &.active {
+      background: url(../public/assets/images/icons/view.svg) center center / 20px 20px no-repeat;
+    }
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .phone-plus {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    color: var(--green);
+  }
+
+  .error {
+    border-color: var(--red) !important;
+  }
+  .invalid-feedback {
+    text-align: center;
+  }
 }

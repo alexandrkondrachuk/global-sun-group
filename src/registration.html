@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru-RU">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -104,37 +104,59 @@
                         <h3>Зарегистрируйтесь, чтобы добавить свой профиль в нашу систему</h3>
                         <form action="" id="registration-form">
                             <div class="form-group">
-                                <label for="login" class="d-none">Email address</label>
-                                <input type="email" class="form-control" id="login" aria-describedby="loginHelp"
-                                       placeholder="Введите адрес эл. почты">
-                                <small id="loginHelp" class="form-text text-muted">Мы никогда никому не передадим вашу электронную почту.</small>
+                                <label for="FirstName" class="d-none">First name</label>
+                                <input type="text" class="form-control" id="FirstName" name="FirstName" aria-describedby="FirstNameHelp"
+                                       placeholder="First name">
                             </div>
                             <div class="form-group">
-                                <label for="password" class="d-none">Password</label>
-                                <input type="password" class="form-control" id="password" placeholder="Пароль">
+                                <label for="LastName" class="d-none">Last name</label>
+                                <input type="text" class="form-control" id="LastName" name="LastName" aria-describedby="LastNameHelp"
+                                       placeholder="Last name">
                             </div>
                             <div class="form-group">
-                                <label for="firstName" class="d-none">First Name</label>
-                                <input type="text" class="form-control" id="firstName"
-                                       placeholder="Имя">
+                                <label for="Email" class="d-none">Email address</label>
+                                <input type="email" class="form-control" id="Email" name="Email" aria-describedby="EmailHelp"
+                                       placeholder="Email">
                             </div>
                             <div class="form-group">
-                                <label for="lastName" class="d-none">Last Name</label>
-                                <input type="text" class="form-control" id="lastName"
-                                       placeholder="Фамилия">
+                                <label class="sr-only" for="Password">Password</label>
+                                <div class="input-group mb-2">
+                                    <input type="password" class="form-control" id="Password" name="Password" placeholder="Password">
+                                    <div class="input-group-append">
+                                        <div class="input-group-text"><span class="visibility" data-target="Password"></span></div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-group">
-                                <label for="phone" class="d-none">Mobile Number</label>
-                                <input type="tel" class="form-control" id="phone"
-                                       placeholder="Номер мобильного">
+                                <label class="sr-only" for="ConfirmPassword">Confirm Password</label>
+                                <div class="input-group mb-2">
+                                    <input type="password" class="form-control" id="ConfirmPassword" name="ConfirmPassword" placeholder="Confirm Password">
+                                    <div class="input-group-append">
+                                        <div class="input-group-text"><span class="visibility" data-target="ConfirmPassword"></span></div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-group">
-                                <label for="add" class="d-none">Additional fields</label>
-                                <input type="text" class="form-control" id="add"
-                                       placeholder="Больше полей здесь ...">
+                                <label class="sr-only" for="PhoneNumber">Phone Number</label>
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text"><span class="phone-plus"><i class="fa fa-plus" aria-hidden="true"></i></span></div>
+                                    </div>
+                                    <input type="tel" class="form-control" id="PhoneNumber" name="PhoneNumber" placeholder="Phone Number">
+                                </div>
+                            </div>
+                            <div class="form-group text-center">
+                                <button type="submit" class="btn btn-link btn-main">Отправить</button>
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-link btn-main" data-action="fill">Отправить</button>
+                                <div id="register-validation-error" class="invalid-feedback">
+                                    Please check your fields data more carefully and try again
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div id="register-server-error" class="invalid-feedback">
+                                    This email is already in use. Please enter another email.
+                                </div>
                             </div>
                         </form>
                     </div>

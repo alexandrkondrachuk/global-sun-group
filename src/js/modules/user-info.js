@@ -13,6 +13,7 @@ export default class UserInfo {
     // @type - local | session
     render(type = 'local') {
         const Register_ = (type === 'local') ? Register : RegisterSession;
+        const lang = config.languages[document.querySelector('html').getAttribute('lang')];
         if (Register_.has(config.store.auth) && Register_.has(config.store.userInfo)) {
             const userInfoModel = Register_.get(config.store.userInfo);
             const navbarButtons = $('#navbar-buttons') ? $('#navbar-buttons')[0] : null;
@@ -33,7 +34,11 @@ export default class UserInfo {
                     Register_.remove(config.store.userInfo);
                     Register_.remove(config.store.auth);
                     Register_.remove(config.store.authInfo);
-                    window.location.replace(config.urls.redirectLogoutURL);
+                    if(lang === 'ru') {
+                        window.location.replace(config.urls.redirectLogoutRuURL);
+                    } else {
+                        window.location.replace(config.urls.redirectLogoutEnURL);
+                    }
                 });
             }
             // Show user info panel

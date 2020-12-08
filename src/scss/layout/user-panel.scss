@@ -29,7 +29,7 @@
     }
   }
 
-  .dropdown-menu {
+  #dropdown-menu-user-panel.dropdown-menu {
     left: 0;
     width: 100%;
 
@@ -49,14 +49,14 @@
 
   #dropdown-menu-user-panel {
     .fa-credit-card-alt {
-      font-size: 12px;
+      font-size: response(12px);
     }
 
     @include media-breakpoint-down(md) {
       width: calc(100% + 4px);
       background-color: var(--dark);
       border: 1px solid var(--green);
-      transform: translate3d(-2px, 0, 0);
+      transform: translate3d(0, 0, 0);
       .dropdown-item {
         padding-left: response(16px);
         color: var(--white);

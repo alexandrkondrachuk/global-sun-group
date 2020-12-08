@@ -2,6 +2,7 @@ import 'ion-rangeslider';
 import { config } from '../config';
 import * as _ from 'lodash';
 import moment from 'moment';
+import * as validator from 'validator';
 import Transport from './classes/Transport';
 import Register from './classes/register';
 import RegisterSession from './classes/register-session';
@@ -31,6 +32,28 @@ let userInfoModel = {
     LastName: '',
     PhoneNumber: '',
     Sex: 1,
+};
+let registrationModelValidation = {
+    Email: (value) => (!validator.isEmpty(value) && validator.isEmail(value)),
+    Password: (value) => (!validator.isEmpty(value) && validator.isLength(value, { min: 6, max: 100 })),
+    ConfirmPassword: (value) => (!validator.isEmpty(value) && validator.isLength(value, { min: 6, max: 100 })),
+    PhoneNumber: (value) => (!validator.isEmpty(value) && validator.isMobilePhone(value)),
+    FirstName: (value) => (!validator.isEmpty(value) && validator.isLength(value, { min: 3, max: 100 })),
+    LastName: (value) => (!validator.isEmpty(value) && validator.isLength(value, { min: 3, max: 100 })),
+};
+let errors = {};
+let registrationModel = {
+    Email: '',
+    Password: '',
+    ConfirmPassword: '',
+    PhoneNumber: '',
+    FirstName: '',
+    LastName: '',
+};
+
+let registrationShowModel = {
+    Password: false,
+    ConfirmPassword: false,
 };
 
 export default class Form {
@@ -93,6 +116,7 @@ export default class Form {
         }
     }
 
+    // Contact Form Handlers
     handleContactsForm() {
         jQuery(selectors.contacts).on('submit', (e) => {
             e.preventDefault();
@@ -111,6 +135,16 @@ export default class Form {
         // Check auth info in store
         this.setAuthData('local', loginField, passwordField, loginFormModel);
         this.setAuthData('session', loginField, passwordField, loginFormModel);
+        // Check redirect after registration
+        if (RegisterSession.has(config.store.registrationInfo)) {
+            const registrationInfo = RegisterSession.get(config.store.registrationInfo);
+            const Email = _.get(registrationInfo, 'Email', '');
+            const Password = _.get(registrationInfo, 'Password', '');
+            $(loginField).val(Email);
+            $(passwordField).val(Password);
+            _.set(loginFormModel, 'username', Email);
+            _.set(loginFormModel, 'password', Password);
+        }
 
         if (isReadyElements) {
             $(loginField).on('input', (e) => {
@@ -142,6 +176,7 @@ export default class Form {
     handleLoginForm() {
         jQuery(selectors.login).on('submit', async (e) => {
             e.preventDefault();
+            const lang = config.languages[document.querySelector('html').getAttribute('lang')];
             const submitButton = $('#login-submit') ? $('#login-submit')[0] : null;
             const loginError = $('#login-error') ? $('#login-error')[0] : null;
             const navbarButtons = $('#navbar-buttons') ? $('#navbar-buttons')[0] : null;
@@ -176,6 +211,7 @@ export default class Form {
                     // Work with DOM
                     const userLoginElement = $('#user-login') ? $('#user-login')[0] : null;
                     const userBalanceElement = $('#user-balance') ? $('#user-balance')[0] : null;
+
                     if (userInfoStatus === Transport.STATUS_OK && userInfoData) {
                         userInfoModel = _.merge(userInfoModel, userInfoData);
                         if (isSave) {
@@ -194,7 +230,11 @@ export default class Form {
                         $(navbarButtons).fadeOut('slow', function () {
                             $(userPanel).fadeIn('slow');
                             // Redirect after login
-                            _.delay(() => window.location.replace(config.urls.redirectLoginURL), config.loginRedirectDelay);
+                            if (lang === 'ru') {
+                                _.delay(() => window.location.replace(config.urls.redirectLoginRuURL), config.loginRedirectDelay);
+                            } else {
+                                _.delay(() => window.location.replace(config.urls.redirectLoginEnURL), config.loginRedirectDelay);
+                            }
                         });
                     }
                 }
@@ -208,9 +248,85 @@ export default class Form {
         });
     }
 
+    // Register Form Handlers
+    handleRegistrationFormInputs() {
+        // Handle registration inputs
+        Object.keys(registrationModel).forEach((key) => {
+            const element = $(`#${key}`)[0];
+            if (element) {
+                $(element).on('input', (e) => {
+                    const name = _.get(e, 'target.name', null);
+                    const value = _.get(e, 'target.value', '');
+                    if (!name) return;
+                    _.set(registrationModel, name, value);
+                });
+            }
+        });
+        // Handle password visibility
+        const visibilityElements = $('.visibility');
+        if (visibilityElements.length > 0) {
+            $(visibilityElements).each((idx, element) => {
+                const target = $(element);
+                target.on('click', (e) => {
+                    const dataTarget = target.attr('data-target');
+                    const status = _.get(registrationShowModel, dataTarget);
+                    _.set(registrationShowModel, dataTarget, !status);
+
+                    target.toggleClass('active');
+
+                    if (_.get(registrationShowModel, dataTarget)) {
+                        $(`#${dataTarget}`).attr('type', 'text');
+                    } else {
+                        $(`#${dataTarget}`).attr('type', 'password');
+                    }
+                });
+            });
+        }
+    }
+
     handleRegistrationForm() {
-        jQuery(selectors.registration).on('submit', (e) => {
+        jQuery(selectors.registration).on('submit', async (e) => {
             e.preventDefault();
+            const lang = config.languages[document.querySelector('html').getAttribute('lang')];
+            errors = {};
+            let isFormValid = false;
+            let isPasswordMatch = (_.get(registrationModel, 'Password') === _.get(registrationModel, 'ConfirmPassword'));
+            Object.keys(registrationModel).forEach((key) => {
+                const isValid = registrationModelValidation[key](registrationModel[key]);
+                if (!isValid) {
+                    errors[key] = true;
+                    $(`#${key}`).addClass('error');
+                } else {
+                    $(`#${key}`).removeClass('error');
+                }
+            });
+            if(isPasswordMatch) {
+                $(`#ConfirmPassword`).removeClass('error');
+            } else {
+                $(`#ConfirmPassword`).addClass('error');
+            }
+            isFormValid = ((Object.keys(errors).length === 0) && isPasswordMatch);
+            if (isFormValid) {
+                $('#register-validation-error').hide();
+                $('#register-server-error').hide();
+                try {
+                    const registration = await Transport.registerUser(registrationModel);
+                    const status = _.get(registration, 'status');
+                    if (status === Transport.STATUS_OK) {
+                        RegisterSession.set(config.store.registrationInfo, registrationModel);
+                        if (lang === 'ru') {
+                            _.delay(() => window.location.replace(config.urls.redirectRegistrationRu), 100);
+                        } else {
+                            _.delay(() => window.location.replace(config.urls.redirectRegistrationEn), 100);
+                        }
+                    }
+                } catch(e) {
+                    $('#register-server-error').show();
+                    throw new Error(e);
+                }
+            } else {
+                $('#register-validation-error').show();
+            }
         });
     }
 
@@ -238,6 +354,7 @@ export default class Form {
         this.handleLoginFormInputs();
         this.handleLoginForm();
         // 4. Registration form
+        this.handleRegistrationFormInputs();
         this.handleRegistrationForm();
     }
 }

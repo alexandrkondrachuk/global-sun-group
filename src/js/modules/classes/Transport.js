@@ -57,6 +57,16 @@ export default class Transport {
             throw new Error(e);
         }
     }
+
+    // User registration
+    static async registerUser(model = null) {
+        if (!model) return;
+        try {
+            return await axios.post(config.urls.registrationApiURL, model);
+        } catch (e) {
+            throw new Error(e);
+        }
+    }
 }
 
 Transport.STATUS_OK = 200;

@@ -7,12 +7,17 @@ const config = {
     store: {
         authInfo: 'authInfo',
         auth: 'auth',
-        userInfo: 'userInfo'
+        userInfo: 'userInfo',
+        registrationInfo: 'registrationInfo',
     },
     precision: 2,
     urls: {
-        redirectLoginURL: '/index.html',
-        redirectLogoutURL: '/index.html',
+        redirectLoginRuURL: '/cabinet',
+        redirectLoginEnURL: '/cabinet-en',
+        redirectLogoutRuURL: '/',
+        redirectLogoutEnURL: '/en/home/',
+        redirectRegistrationRu: '/log-in/',
+        redirectRegistrationEn: '/en/login/',
         serverURL: server,
         contentApiURL: `${server}wp-json/wp/v2/`,
         contentPostsApiURL: `${server}wp-json/wp/v2/posts`,
