@@ -2,6 +2,7 @@ import Transport from './classes/Transport';
 import * as _ from 'lodash';
 import moment from 'moment';
 import { config } from '../config';
+import numeral from 'numeral';
 
 export default class Stations {
     async init() {
@@ -32,7 +33,11 @@ export default class Stations {
                         if (dateToFormat.includes(dataMap[s])) {
                             $(target).text(moment(targetInfo).format(config.dateFormat));
                         } else {
-                            $(target).text(targetInfo);
+                            if(typeof targetInfo === 'number') {
+                                $(target).text(numeral(targetInfo).format(config.numberShortFormat).replace(',', ' '));
+                            } else {
+                                $(target).text(targetInfo);
+                            }
                         }
                     });
                 });

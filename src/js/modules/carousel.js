@@ -2,6 +2,7 @@ import { config } from '../config';
 import * as _ from 'lodash';
 import moment from 'moment';
 import { Autoplay, Lazy, Navigation, Pagination, Swiper } from 'swiper';
+import numeral from 'numeral';
 import Transport from './classes/Transport';
 
 const { selector, options } = config.carousel;
@@ -21,7 +22,7 @@ export default class Carousel {
                     const s = `
                     <div class="swiper-slide" data-target="power-plant" data-index="${_.get(slide, 'Id')}">
                         <div class="swiper-slide-mark-left">
-                            <p><span class="amount">${_.get(slide, 'MinPower')}</span><span class="unit">kWt</span></p>
+                            <p><span class="amount">${numeral(_.get(slide, 'MinPower')).format(config.numberShortFormat).replace(',', ' ')}</span><span class="unit">kWt</span></p>
                         </div>
                         <div class="swiper-slide-mark-right">
                             <p><span class="prefix">roi: </span><span class="amount">${_.get(slide, 'Roi')}</span><span
@@ -67,10 +68,15 @@ export default class Carousel {
 
                         Object.keys(dataMap).forEach((s) => {
                             jQuery(slideModal).find(`[data-value="${s}"]`).each(function (idx, el) {
+                                const data = _.get(current, dataMap[s]);
                                 if (dateFormat.includes(dataMap[s])) {
-                                    jQuery(el).text(moment(_.get(current, dataMap[s])).format(config.dateFormat));
+                                    jQuery(el).text(moment(data).format(config.dateFormat));
                                 } else {
-                                    jQuery(el).text(_.get(current, dataMap[s]));
+                                    if(typeof data === 'number') {
+                                        jQuery(el).text(numeral(data).format(config.numberShortFormat).replace(',', ' '));
+                                    } else {
+                                        jQuery(el).text(data);
+                                    }
                                 }
                             });
                         });

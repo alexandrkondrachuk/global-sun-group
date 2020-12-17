@@ -1,4 +1,4 @@
-const server = 'http://globalsungroup.com/';
+const server = 'http://akondrachuk.s-host.net/';
 const apiServer = 'http://globalsungroup.com/sunserver/';
 const config = {
     spinnerTimer: 2 * 1000,
@@ -11,6 +11,9 @@ const config = {
         registrationInfo: 'registrationInfo',
     },
     precision: 2,
+    numberFormat: '0,0.00',
+    numberParts: [',',' '],
+    numberShortFormat: '0,0',
     urls: {
         redirectLoginRuURL: '/cabinet',
         redirectLoginEnURL: '/cabinet-en',

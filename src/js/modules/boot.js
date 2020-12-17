@@ -6,6 +6,10 @@ export default class Boot {
         jQuery(document).ready(function () {
             const spinner = document.getElementById('spinner');
             const main = document.querySelector('main');
+            // 10. User info panel
+            userInfo.init();
+            setTimeout(() => $("#main-navbar").fadeIn(), config.spinnerTimer + 250);
+
             if (spinner && main) {
                 window.setTimeout(() => {
                     jQuery(spinner).fadeOut();
@@ -29,8 +33,6 @@ export default class Boot {
                     jQuery('[data-toggle="tooltip"]').tooltip();
                     // 8.2. Enable collapse
                     jQuery('.collapse').collapse('hide');
-                    // 10. User info panel
-                    userInfo.init();
                 }, config.spinnerTimer);
                 // Async methods
                 // 9. Stations Generator

@@ -72,13 +72,13 @@
       }
 
       h3 {
-        @extend .font-mono-1;
+        @extend .font-mono-2;
         letter-spacing: 0;
         text-transform: uppercase;
       }
 
       h4 {
-        font: normal 400 response(16px)/1.5 var(--font-family-sans-serif);
+        font: normal 400 response(14px)/1.5 var(--font-family-sans-serif);
         letter-spacing: 0;
       }
     }
@@ -95,6 +95,7 @@
       background-color: var(--green);
       color: var(--white);
       opacity: 0.8;
+      font-size: response(16px);
       &:after {
         content: '';
         position: absolute;
@@ -135,6 +136,7 @@
       background-color: var(--green);
       color: var(--white);
       opacity: 0.8;
+      font-size: response(16px);
       &:after {
         content: '';
         position: absolute;
