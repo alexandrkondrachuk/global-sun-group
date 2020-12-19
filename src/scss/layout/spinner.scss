@@ -12,8 +12,25 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: var(--white) url("../public/assets/images/mt-1168-home-parallax1.jpg") no-repeat center center;
+  // background: var(--white) url("../public/assets/images/mt-1168-home-parallax1.jpg") no-repeat center center;
+  // background-size: cover;
+  background-image: url("../public/assets/images/mt-1168-home-parallax1.jpg");
+  background-position: center;
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
   background-size: cover;
+  background-repeat: no-repeat;
+
+  @include media-breakpoint-down(md) {
+    background-image: url("../public/assets/images/mt-1168-home-parallax1-min.jpg");
+    background-position: center;
+    -o-background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
 
   .sk-folding-cube {
     margin: response(20px) auto;
@@ -33,6 +50,7 @@
     -ms-transform: scale(1.1);
     transform: scale(1.1);
   }
+
   .sk-folding-cube .sk-cube:before {
     content: '';
     position: absolute;
@@ -47,44 +65,53 @@
     -ms-transform-origin: 100% 100%;
     transform-origin: 100% 100%;
   }
+
   .sk-folding-cube .sk-cube2 {
     -webkit-transform: scale(1.1) rotateZ(90deg);
     transform: scale(1.1) rotateZ(90deg);
   }
+
   .sk-folding-cube .sk-cube3 {
     -webkit-transform: scale(1.1) rotateZ(180deg);
     transform: scale(1.1) rotateZ(180deg);
   }
+
   .sk-folding-cube .sk-cube4 {
     -webkit-transform: scale(1.1) rotateZ(270deg);
     transform: scale(1.1) rotateZ(270deg);
   }
+
   .sk-folding-cube .sk-cube2:before {
     -webkit-animation-delay: 0.3s;
     animation-delay: 0.3s;
   }
+
   .sk-folding-cube .sk-cube3:before {
     -webkit-animation-delay: 0.6s;
     animation-delay: 0.6s;
   }
+
   .sk-folding-cube .sk-cube4:before {
     -webkit-animation-delay: 0.9s;
     animation-delay: 0.9s;
   }
+
   @-webkit-keyframes sk-foldCubeAngle {
     0%, 10% {
       -webkit-transform: perspective(140px) rotateX(-180deg);
       transform: perspective(140px) rotateX(-180deg);
       opacity: 0;
-    } 25%, 75% {
-        -webkit-transform: perspective(140px) rotateX(0deg);
-        transform: perspective(140px) rotateX(0deg);
-        opacity: 1;
-      } 90%, 100% {
-          -webkit-transform: perspective(140px) rotateY(180deg);
-          transform: perspective(140px) rotateY(180deg);
-          opacity: 0;
-        }
+    }
+    25%, 75% {
+      -webkit-transform: perspective(140px) rotateX(0deg);
+      transform: perspective(140px) rotateX(0deg);
+      opacity: 1;
+    }
+    90%, 100% {
+      -webkit-transform: perspective(140px) rotateY(180deg);
+      transform: perspective(140px) rotateY(180deg);
+      opacity: 0;
+    }
   }
 
   @keyframes sk-foldCubeAngle {
@@ -92,15 +119,17 @@
       -webkit-transform: perspective(140px) rotateX(-180deg);
       transform: perspective(140px) rotateX(-180deg);
       opacity: 0;
-    } 25%, 75% {
-        -webkit-transform: perspective(140px) rotateX(0deg);
-        transform: perspective(140px) rotateX(0deg);
-        opacity: 1;
-      } 90%, 100% {
-          -webkit-transform: perspective(140px) rotateY(180deg);
-          transform: perspective(140px) rotateY(180deg);
-          opacity: 0;
-        }
+    }
+    25%, 75% {
+      -webkit-transform: perspective(140px) rotateX(0deg);
+      transform: perspective(140px) rotateX(0deg);
+      opacity: 1;
+    }
+    90%, 100% {
+      -webkit-transform: perspective(140px) rotateY(180deg);
+      transform: perspective(140px) rotateY(180deg);
+      opacity: 0;
+    }
   }
 
   h2 {
@@ -109,10 +138,12 @@
     margin: response(40px) 0;
     font: normal 500 response(36px)/1.5 var(--font-family-sans-serif);
     color: var(--green);
+
     small {
       font: normal 400 response(32px)/1.5 var(--font-family-poppins);
       color: var(--white);
     }
+
     img {
       display: inline-block;
       margin-right: 5px;
