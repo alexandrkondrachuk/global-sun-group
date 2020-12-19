@@ -3,6 +3,7 @@ import RegisterSession from './classes/register-session';
 import Transport from './classes/Transport';
 import { config } from '../config';
 import * as _ from 'lodash';
+import moment from 'moment';
 import numeral from 'numeral';
 
 export default class UserInfo {
@@ -18,10 +19,21 @@ export default class UserInfo {
         const lang = config.languages[document.querySelector('html').getAttribute('lang')];
         if (Register_.has(config.store.auth) && Register_.has(config.store.authInfo)) {
             const authInfoModel = Register_.get(config.store.authInfo);
+            const tokenExpiresDate = moment(_.get(authInfoModel, '.expires'));
+            const isValidToken = !!(tokenExpiresDate._isValid && moment().isBefore(tokenExpiresDate));
+
+            // Check token validation
+            if (!isValidToken) {
+                const authResponse = await Transport.doAuth(Register_.get(config.store.auth));
+                const model =_.get(authResponse, 'data');
+                Register_.set(config.store.authInfo, model);
+            }
+
             const access_token = _.get(authInfoModel, 'access_token', null);
             if (!access_token) return;
             const modelResponse = await Transport.getUserInfo(access_token);
             const model = _.get(modelResponse, 'data', null);
+            // Work with DOM here
             const navbarButtons = $('#navbar-buttons') ? $('#navbar-buttons')[0] : null;
             const userPanel = $('#user-panel') ? $('#user-panel')[0] : null;
             const userLoginElement = $('#user-login') ? $('#user-login')[0] : null;
