@@ -12,6 +12,7 @@
   "devDependencies": {
     "@babel/core": "^7.7.7",
     "@babel/preset-env": "^7.7.7",
+    "autoprefixer": "^10.1.0",
     "babel-loader": "^8.0.6",
     "css-loader": "^3.4.1",
     "file-loader": "^5.0.2",
@@ -19,6 +20,7 @@
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^4.13.0",
+    "postcss-loader": "^4.1.0",
     "sass-loader": "^8.0.0",
     "style-loader": "^1.1.2",
     "webpack": "^4.41.5",
@@ -37,9 +39,18 @@
     "lodash": "^4.17.20",
     "moment": "^2.29.1",
     "numeral": "^2.0.6",
+    "postcss": "^8.2.1",
     "querystring": "^0.2.0",
     "scroll-to-element": "^2.0.3",
     "swiper": "^6.3.2",
     "validator": "^13.5.1"
-  }
+  },
+  "browserslist": [
+    "defaults",
+    "not ie < 11",
+    "last 2 versions",
+    "> 1%",
+    "iOS 7",
+    "last 3 iOS versions"
+  ]
 }
