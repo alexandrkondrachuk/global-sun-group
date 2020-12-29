@@ -68,18 +68,18 @@ export default class Form {
             const endInvestmentsElement = $('#endInvestment') || $('#endInvestment')[0];
 
             if (cache && amountElement && paymentElement && roiElement && endInvestmentsElement) {
-                const last = (Array.isArray(cache) && cache.length > 0) ? cache[0] : null;
-                if (!last) return;
+                const main = (Array.isArray(cache) && cache.length > 0) ? cache.find((s) => !!_.get(s, 'IsForMainPage', false)) : null;
 
-                const powerAmount = investFormModel.value / _.get(last, 'PricePerKW', 0);
-                const payoutAmount = powerAmount * _.get(last, 'PaymentPerKW', 0);
-                const roi = _.get(last, 'Roi', 0);
-                const endInvestmentDate = _.get(last, 'EndInvestmentDate');
+                if (!main) return;
 
+                const powerAmount = investFormModel.value / _.get(main, 'PricePerKW', 0);
+                const payoutAmount = powerAmount * _.get(main, 'PaymentPerKW', 0);
+                const roi = _.get(main, 'Roi', 0);
+                const endInvestmentDate = investFormModel.value / payoutAmount;
                 $(amountElement).val(String((powerAmount).toFixed(config.precision)));
                 $(paymentElement).val(String((payoutAmount).toFixed(config.precision)));
                 $(roiElement).val(String(roi));
-                $(endInvestmentsElement).val(moment(endInvestmentDate).format(config.dateFormat));
+                $(endInvestmentsElement).val(String(Math.ceil(+endInvestmentDate.toFixed(config.precision))));
             }
         });
     }

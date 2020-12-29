@@ -11,15 +11,10 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  // background: var(--dark) url("../public/assets/images/mt-1168-home-parallax1 (1).jpg") no-repeat center center;
-  // background-attachment: fixed;
-  // background-size: cover;
+
   background-image: url("../public/assets/images/mt-1168-home-parallax1 (1).jpg");
   background-position: center;
   background-attachment: fixed;
-  -o-background-size: cover;
-  -moz-background-size: cover;
-  -webkit-background-size: cover;
   background-size: cover;
   background-repeat: no-repeat;
 
@@ -27,10 +22,7 @@
     background-image: url("../public/assets/images/mt-1168-home-parallax1-min.jpg");
     background-position: center;
     background-attachment: fixed;
-    -o-background-size: cover;
-    -moz-background-size: cover;
-    -webkit-background-size: cover;
-    background-size: cover;
+    background-size: 100vmax 100vmax;
     background-repeat: no-repeat;
   }
 
