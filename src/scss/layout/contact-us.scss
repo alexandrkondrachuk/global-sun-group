@@ -6,6 +6,8 @@
 @import "../../scss/base/typography";
 
 #contact-us {
+  width: 100%;
+  height: response(500px);
   padding: response(90px) 0;
   display: flex;
   justify-content: center;
@@ -22,7 +24,7 @@
     background-image: url("../public/assets/images/mt-1168-home-parallax1-min.jpg");
     background-position: center;
     background-attachment: fixed;
-    background-size: 100vmax 100vmax;
+    background-size: cover;
     background-repeat: no-repeat;
   }
 
@@ -65,5 +67,11 @@
       color: var(--green);
       background-color: var(--white);
     }
+  }
+}
+
+.IOS {
+  #contact-us {
+    background-attachment: scroll !important;
   }
 }

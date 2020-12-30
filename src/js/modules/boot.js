@@ -3,6 +3,7 @@ import { carousel, counter, form, modal, navigation, scrollToElement, topButton,
 
 export default class Boot {
     start() {
+        this.detectIOS();
         jQuery(document).ready(function () {
             const spinner = document.getElementById('spinner');
             const main = document.querySelector('main');
@@ -39,5 +40,12 @@ export default class Boot {
                 stations.init();
             }
         });
+    }
+
+    detectIOS() {
+        if (navigator.userAgent.match(/(iPad|iPhone|iPod|Android|Silk)/gi)) {
+            const body = document.body;
+            body.classList.add('IOS');
+        }
     }
 }
