@@ -50,7 +50,7 @@
     letter-spacing: 0;
   }
 
-  .btn-first {
+  .btn-first, .btn-second {
     min-width: response(178px);
     min-height: response(58px);
     background-color: var(--green);

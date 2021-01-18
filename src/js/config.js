@@ -126,6 +126,15 @@ const config = {
             duration: 1500
         },
     },
+    scrollToElementSecondary: {
+        emitter: '.btn-second',
+        target: '#page-description',
+        options: {
+            offset: -60,
+            ease: 'out-circ',
+            duration: 1500
+        },
+    },
     modal: {
         selector: 'button[data-action="fill"]',
         target: '#fillModal',
